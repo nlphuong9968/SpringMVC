@@ -7,27 +7,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h3>chu de JSP</h3>
-	
-	<!-- scriptlet tag -->
-	<h2>scriptlet tag</h2>
-	<% 	int a = 2;
-		int b =4;
-		int tong = a + b;
-		out.print("Tong la: "+tong);
+	<h3>${username }</h3>
+	${password}
+	<%
+		String name = (String) request.getAttribute("username");
+		String b = (String) request.getAttribute("password");
+		int a = 5;
+		int tong = a;
 	%>
-	
-	<!-- expression tag -->
-	<h2>expression tag</h2>
-	<%= tong %>
-	
-	<!-- declaration tag -->
-	<h2>declaration tag</h2>
-	<%!	int e = 2;
-		int f =4;
-		int c = 2;
-		int tong1 = e + f + c;	
-	%>
-	<%= tong1 %>
+	<br>
+	<%= tong %><br>
+	<%= b %>
 </body>
 </html>
