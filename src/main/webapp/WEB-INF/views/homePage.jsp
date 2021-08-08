@@ -1,3 +1,5 @@
+<%@page import="java.util.List"%>
+<%@page import="com.nlphuong.entity.Employee"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -7,16 +9,24 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h3>${username }</h3>
-	${password}
+	<%-- <h3>${employee.getName()}</h3>
+	<h3>${employee.getAge()}</h3>
+	<h3>${employee.getAddress()}</h3>
+	
+	
 	<%
-		String name = (String) request.getAttribute("username");
-		String b = (String) request.getAttribute("password");
-		int a = 5;
-		int tong = a;
+		Employee emp = (Employee) request.getAttribute("employee");
 	%>
-	<br>
-	<%= tong %><br>
-	<%= b %>
+	
+	<h3><%= emp.getName() %></h3>  --%>
+	
+	<% List<Employee> list = (List<Employee>) request.getAttribute("empList"); 
+		for(Employee emp : list){ %>
+		
+		<h3><%= emp.getName() %></h3>
+		<br>
+	<%	} %>
+	
+	
 </body>
 </html>
