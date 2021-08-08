@@ -11,53 +11,6 @@
 		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.3.xsd
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
 
-	<bean id="director" class="com.nlphuong.entity.Director">
-		<constructor-arg name="position" value="director" />
-		<constructor-arg name="name" value="Phuong" />
-		<constructor-arg name="age" value="18" />
-	</bean>
 	
-	<bean id="director1" class="com.nlphuong.entity.Director">
-		<constructor-arg name="position" value="director" />
-		<constructor-arg name="name" value="Phuong1" />
-		<constructor-arg name="age" value="18" />
-	</bean>
-	
-	<bean id="director2" class="com.nlphuong.entity.Director">
-		<constructor-arg name="position" value="director" />
-		<constructor-arg name="name" value="Phuong2" />
-		<constructor-arg name="age" value="18" />
-	</bean>
-
-	<bean id="employee" class="com.nlphuong.entity.Employee">
-		<constructor-arg ref="director" />
-		<property name="list">
-			<list>
-				<!-- <value>Nguyen Linh Phuong</value>
-				<value>Nguyen Linh Phuong1</value>
-				<value>Nguyen Linh Phuong2</value>
-				<value>Nguyen Linh Phuong3</value> -->
-				<ref bean="director"/>
-				<ref bean="director1"/>
-				<ref bean="director2"/>
-			</list>
-		</property>
-		<property name="map">
-			<map>
-				<entry key="key1" value="Abc"/>
-				<entry key="key2" value-ref="director"/>
-			</map>
-		</property>
-		
-		<property name="properties">
-			<props>
-				<prop key="jdbc">mysql</prop>
-				<prop key="user">root</prop>
-				<prop key="password">123456</prop>
-			</props>
-		</property>
-	</bean>
-	
-	<bean id="customLoader" class="com.nlphuong.controller.CustomLoader" autowire="byType"></bean>
 
 </beans>
