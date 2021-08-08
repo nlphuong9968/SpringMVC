@@ -4,7 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map.Entry;
 
 import org.springframework.context.ApplicationContext;
@@ -39,7 +40,7 @@ public class homePageController {
 	}
 */
 	//Cach 2
-	@RequestMapping("/")
+/*	@RequestMapping("/")
 	public String homePage(ModelMap modelMap) {
 		
 		String username = "Nguyen Linh Phuong";
@@ -47,6 +48,35 @@ public class homePageController {
 		
 		modelMap.addAttribute("username", username);
 		modelMap.addAttribute("password", password);
+		
+		return "homePage";
+
+	}
+*/
+	//Object, List
+	@RequestMapping("/")
+	public String homePage(ModelMap modelMap) {
+		
+		String username = "Nguyen Linh Phuong";
+		String password = "123456";
+		
+		Employee emp = new Employee();
+		emp.setName("Nguyen Linh Phuong");
+		emp.setAge(18);
+		emp.setAddress("unknown");
+		
+		Employee emp1 = new Employee();
+		emp1.setName("Nguyen Linh Phuong1");
+		emp1.setAge(22);
+		emp1.setAddress("unknown1");
+		
+		List<Employee> empList = new ArrayList<Employee>();
+		empList.add(emp);
+		empList.add(emp1);
+		
+		//modelMap.addAttribute("employee", emp); //Object
+		modelMap.addAttribute("empList", empList);//list
+		
 		
 		return "homePage";
 
