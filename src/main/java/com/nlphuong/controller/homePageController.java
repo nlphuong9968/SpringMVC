@@ -14,6 +14,8 @@ import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -54,31 +56,20 @@ public class homePageController {
 	}
 */
 	//Object, List
-	@RequestMapping("/")
-	public String homePage(ModelMap modelMap) {
-		
-		String username = "Nguyen Linh Phuong";
-		String password = "123456";
-		
-		Employee emp = new Employee();
-		emp.setName("Nguyen Linh Phuong");
-		emp.setAge(18);
-		emp.setAddress("unknown");
-		
-		Employee emp1 = new Employee();
-		emp1.setName("Nguyen Linh Phuong1");
-		emp1.setAge(22);
-		emp1.setAddress("unknown1");
-		
-		List<Employee> empList = new ArrayList<Employee>();
-		empList.add(emp);
-		empList.add(emp1);
-		
-		//modelMap.addAttribute("employee", emp); //Object
-		modelMap.addAttribute("empList", empList);//list
-		
+	@RequestMapping(path = "/", method = RequestMethod.GET)
+	public String homePage(ModelMap modelMap) {	
 		
 		return "homePage";
+
+	}
+	
+	@RequestMapping(path = "/detail", method = RequestMethod.POST)
+	public String detail(@RequestParam("id") int id,@RequestParam("name") String name, ModelMap modelMap) {
+		
+		modelMap.addAttribute("id", id);
+		modelMap.addAttribute("name", name);
+		
+		return "detailPage";
 
 	}
 }
