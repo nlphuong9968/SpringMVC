@@ -13,6 +13,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -63,11 +64,24 @@ public class homePageController {
 
 	}
 	
-	@RequestMapping(path = "/detail", method = RequestMethod.POST)
+	//RequestParam
+/*	@RequestMapping(path = "/detail", method = RequestMethod.POST)
 	public String detail(@RequestParam("id") int id,@RequestParam("name") String name, ModelMap modelMap) {
 		
 		modelMap.addAttribute("id", id);
 		modelMap.addAttribute("name", name);
+		
+		return "detailPage";
+
+	}
+*/
+	//PathVariable
+	@RequestMapping("/detail/{id}/{name}/{date}")
+	public String detail(@PathVariable("id") int id,@PathVariable("name") String name,@PathVariable("date") String date, ModelMap modelMap) {
+		
+		modelMap.addAttribute("id", id);
+		modelMap.addAttribute("name", name);
+		modelMap.addAttribute("date", date);
 		
 		return "detailPage";
 
