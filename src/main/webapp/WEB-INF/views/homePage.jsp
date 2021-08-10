@@ -14,12 +14,8 @@
 	<!-- <a href="detail/123/macbook/2021-09-27">Page Details</a> -->
 	
 	<a href="detail/123">Page Details</a>
+	${name }
 	
-	<form action="detail" method="post">
-		<input type="text" name="id"/><br>
-		<input type="text" name="name"/><br>
-		<input type="submit" value="Post data"/>
-	</form>
 	
 </body>
 </html>
