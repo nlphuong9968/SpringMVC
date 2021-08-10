@@ -7,7 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h3>This is detail page</h3> ${id } 
-	${name } ${date }
+	<h3>This is detail page</h3> 
+	 ${id } 
+	${name } 
+	${date }
 </body>
 </html>

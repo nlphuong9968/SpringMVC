@@ -90,8 +90,8 @@ public class homePageController {
 */
 	//MatrixVariable
 	///detail/123;name=macbook,samsung;date=27-09-2021;name=asus
-	@RequestMapping("/detail/{id}")
-	public String detail(@PathVariable int id,@MatrixVariable String name, @MatrixVariable String date, ModelMap modelMap) {
+	@RequestMapping(path = "/detail/{id}", method = RequestMethod.GET)
+	public String getDetail(@PathVariable int id,@MatrixVariable String name, @MatrixVariable String date, ModelMap modelMap) {
 		
 		modelMap.addAttribute("id", id);
 		modelMap.addAttribute("name", name);
@@ -99,5 +99,16 @@ public class homePageController {
 		
 		return "detailPage";
 
+	}
+	
+	//Post
+	@RequestMapping(path = "/detail", method = RequestMethod.POST)
+	public String postdDetail(@RequestParam String name,@RequestParam int id, ModelMap modelMap) {
+		
+		modelMap.addAttribute("id", id);
+		modelMap.addAttribute("name", name);
+		//modelMap.addAttribute("date", date);
+		
+		return "detailPage";
 	}
 }
