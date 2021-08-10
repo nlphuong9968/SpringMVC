@@ -8,8 +8,9 @@
 </head>
 <body>
 	<h3>This is detail page</h3> 
-	 ${id } 
-	${name } 
+	
+	${emp.getName() } <br>
+	${emp.getAge() } <br>
 	${date }
 </body>
 </html>

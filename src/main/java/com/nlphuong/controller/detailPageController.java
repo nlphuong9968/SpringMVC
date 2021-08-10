@@ -1,32 +1,29 @@
 package com.nlphuong.controller;
 
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.nlphuong.entity.Employee;
 
 @Controller
-@RequestMapping("/")
-public class homePageController {
-	
+@RequestMapping("/detail")
+public class detailPageController {
+
 	@GetMapping
 	public String Default() {
 		
-		return "homePage";
+		return "detailPage";
 	}
 	
-	@GetMapping("/{name}")
-	public String receiveParam(@PathVariable String name, ModelMap modelMap) {
+	@PostMapping
+	public String displayInfoUser(@ModelAttribute Employee emp, ModelMap modelMap) {
 		
-		modelMap.addAttribute("name", name);
-		
-		return "homePage";
+		modelMap.addAttribute("emp", emp);
+		return "detailPage";
 	}
-
-	
 	
 }
