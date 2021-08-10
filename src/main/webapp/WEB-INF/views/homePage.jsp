@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="resources/css/styles.css"/>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -13,7 +14,7 @@
 	
 	<!-- <a href="detail/123/macbook/2021-09-27">Page Details</a> -->
 	
-	<a href="detail">Page Details</a>
+	<a id="testa" href="detail">Page Details</a>
 	${name }
 	
 	<form action="detail" method="post">

@@ -17,6 +17,9 @@
 	<!-- MatrixVariable -->
 	<mvc:annotation-driven enable-matrix-variables="true"/>
 	
+	<!-- Static Resource -->
+	<mvc:resources location="/resources/" mapping="/resources/**"/>
+	
 	<!-- View Resolver -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/"/>
