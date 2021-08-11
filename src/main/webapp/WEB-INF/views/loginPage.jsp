@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<jsp:include page="header.jsp"/>
 </head>
 <body>
 	<form method="post">
