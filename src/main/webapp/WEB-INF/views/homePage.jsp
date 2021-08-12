@@ -79,6 +79,12 @@
 			Your money too large!
 		</c:otherwise>
 	</c:choose>
+	<br>
 	
+	<!-- c:forEach -->
+	<c:forEach items="${empList }" var="emp">
+		<c:out value="${emp.getName() }"/><br>
+		<c:out value="${emp.getAge() }"/><br>
+	</c:forEach>
 </body>
 </html>
