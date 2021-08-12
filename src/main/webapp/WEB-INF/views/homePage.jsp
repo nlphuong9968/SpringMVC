@@ -86,5 +86,11 @@
 		<c:out value="${emp.getName() }"/><br>
 		<c:out value="${emp.getAge() }"/><br>
 	</c:forEach>
+	<br>
+	
+	<!-- c:forTokens -->
+	<c:forTokens items="I am, a handsome, man, and, have, a beautiful, girlfriend" delims="," var="chuoi">
+		<c:out value="${chuoi }"/><br>
+	</c:forTokens>
 </body>
 </html>
