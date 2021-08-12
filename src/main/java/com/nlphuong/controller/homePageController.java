@@ -14,19 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class homePageController {
 	
 	@GetMapping
-	public String Default() {
+	public String Default(ModelMap modelMap) {
+		
+		modelMap.addAttribute("name", "admin");
+		modelMap.addAttribute("age", 18);
 		
 		return "homePage";
 	}
-	
-	@GetMapping("/{name}")
-	public String receiveParam(@PathVariable String name, ModelMap modelMap) {
 		
-		modelMap.addAttribute("name", name);
-		
-		return "homePage";
-	}
-
-	
-	
 }
