@@ -63,5 +63,22 @@
 	<c:if test="${exception != null }">
 		Error : ${exception.message }
 	</c:if>
+	<br>
+	
+	<!-- c:choose, c:when, c:otherwise -->
+	<c:set var="numA" value="100000" />
+	
+	<c:choose>
+		<c:when test="${numA == 100 }">
+			one hundred!
+		</c:when>
+		<c:when test="${numA == 1000 }">
+			one thousand!
+		</c:when>
+		<c:otherwise>
+			Your money too large!
+		</c:otherwise>
+	</c:choose>
+	
 </body>
 </html>
