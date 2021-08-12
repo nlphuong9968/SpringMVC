@@ -49,5 +49,10 @@
 	<c:remove var="firstName"/>
 	<c:out value="${firstName }"/>
 	<br>
+	
+	<!-- c:if -->
+	<c:if test='${name == "admin" || age == 17}'>
+		Hello admin
+	</c:if>
 </body>
 </html>
