@@ -52,7 +52,16 @@
 	
 	<!-- c:if -->
 	<c:if test='${name == "admin" || age == 17}'>
-		Hello admin
+		Hello ${name }
+	</c:if>
+	<br>
+	<!-- c:catch -->
+	<c:catch var="exception">
+		<% int x = 5/0;%>
+	</c:catch>
+	<br>
+	<c:if test="${exception != null }">
+		Error : ${exception.message }
 	</c:if>
 </body>
 </html>
