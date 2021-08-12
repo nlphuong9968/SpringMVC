@@ -43,6 +43,11 @@
 	<!-- cach 2 -->
 	<c:set var="firstName" value="${name } user" />
 	<c:out value="${firstName }"/>
+	<br>
 	
+	<!-- c:remove -->
+	<c:remove var="firstName"/>
+	<c:out value="${firstName }"/>
+	<br>
 </body>
 </html>
