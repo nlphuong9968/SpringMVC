@@ -11,6 +11,6 @@
 		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.3.xsd
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
 
-	
+	<bean id="director" class="com.nlphuong.entity.Director"></bean>
 
 </beans>

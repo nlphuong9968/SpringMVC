@@ -18,6 +18,9 @@
 	
 	<a id="testa" href="detail">Page Details</a><br>
 	<!-- JSTL -->
+	
+	<!-- c:out -->
+	
 	<!-- cach 1 -->
 	${name }<br>
 	${age }
@@ -28,7 +31,18 @@
 	<br>
 	<!-- cach 3 -->
 	<c:out value="${name }"/><br>
-	<c:out value="${age }"/>
+	<c:out value="${age }"/><br>
+	
+	<!-- c:set -->
+	
+	<!--cach 1: target trỏ tới bean trong IoC và dùng property để modify đối tượng trong bean -->
+	<jsp:useBean id="director" class="com.nlphuong.entity.Director" />
+	<c:set value="Nguyen Linh Phuong" target="${director}" property="position" />
+	<c:out value="${director.position }"></c:out>
+	<br>
+	<!-- cach 2 -->
+	<c:set var="firstName" value="${name } user" />
+	<c:out value="${firstName }"/>
 	
 </body>
 </html>
