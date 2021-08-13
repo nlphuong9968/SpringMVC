@@ -36,14 +36,14 @@
 	<!-- c:set -->
 	
 	<!--cach 1: target trỏ tới bean trong IoC và dùng property để modify đối tượng trong bean -->
-	<jsp:useBean id="director" class="com.nlphuong.entity.Director" />
+	<%-- <jsp:useBean id="director" class="com.nlphuong.entity.Director" />
 	<c:set value="Nguyen Linh Phuong" target="${director}" property="position" />
 	<c:out value="${director.position }"></c:out>
 	<br>
 	<!-- cach 2 -->
 	<c:set var="firstName" value="${name } user" />
 	<c:out value="${firstName }"/>
-	<br>
+	<br> --%>
 	
 	<!-- c:remove -->
 	<c:remove var="firstName"/>
