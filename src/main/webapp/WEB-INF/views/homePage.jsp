@@ -15,8 +15,8 @@
 <body>
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-xl-3 col-sm-4"
-				style="height: 100px; background-color: red"></div>
+			<div id="col1" class="col-xl-3 col-sm-4" data-text="hellobaby"
+				style="height: 100px;">COL 1 sdasdasdfsfgghfgbcvdfb</div>
 
 			<div class="col-xl-3 col-sm-8"
 				style="height: 100px; background-color: blue"></div>
