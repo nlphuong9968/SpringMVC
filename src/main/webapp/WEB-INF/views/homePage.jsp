@@ -2,95 +2,34 @@
 <%@page import="com.nlphuong.entity.Employee"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="resources/css/styles.css"/>
+<link rel="stylesheet" href="resources/css/styles.css" />
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<jsp:include page="header.jsp" />
 </head>
 <body>
-	<!-- <a href="detail?id=123&name=macbook">Page Details</a> -->
-	
-	<!-- <a href="detail/123/macbook/2021-09-27">Page Details</a> -->
-	
-	<a id="testa" href="detail">Page Details</a><br>
-	<!-- JSTL -->
-	
-	<!-- c:out -->
-	
-	<!-- cach 1 -->
-	${name }<br>
-	${age }
-	
-	<br>
-	<!-- cach 2 -->
-	<c:out value="${name } ${age }"/>
-	<br>
-	<!-- cach 3 -->
-	<c:out value="${name }"/><br>
-	<c:out value="${age }"/><br>
-	
-	<!-- c:set -->
-	
-	<!--cach 1: target trỏ tới bean trong IoC và dùng property để modify đối tượng trong bean -->
-	<%-- <jsp:useBean id="director" class="com.nlphuong.entity.Director" />
-	<c:set value="Nguyen Linh Phuong" target="${director}" property="position" />
-	<c:out value="${director.position }"></c:out>
-	<br>
-	<!-- cach 2 -->
-	<c:set var="firstName" value="${name } user" />
-	<c:out value="${firstName }"/>
-	<br> --%>
-	
-	<!-- c:remove -->
-	<c:remove var="firstName"/>
-	<c:out value="${firstName }"/>
-	<br>
-	
-	<!-- c:if -->
-	<c:if test='${name == "admin" || age == 17}'>
-		Hello ${name }
-	</c:if>
-	<br>
-	<!-- c:catch -->
-	<c:catch var="exception">
-		<% int x = 5/0;%>
-	</c:catch>
-	<br>
-	<c:if test="${exception != null }">
-		Error : ${exception.message }
-	</c:if>
-	<br>
-	
-	<!-- c:choose, c:when, c:otherwise -->
-	<c:set var="numA" value="100000" />
-	
-	<c:choose>
-		<c:when test="${numA == 100 }">
-			one hundred!
-		</c:when>
-		<c:when test="${numA == 1000 }">
-			one thousand!
-		</c:when>
-		<c:otherwise>
-			Your money too large!
-		</c:otherwise>
-	</c:choose>
-	<br>
-	
-	<!-- c:forEach -->
-	<c:forEach items="${empList }" var="emp">
-		<c:out value="${emp.getName() }"/><br>
-		<c:out value="${emp.getAge() }"/><br>
-	</c:forEach>
-	<br>
-	
-	<!-- c:forTokens -->
-	<c:forTokens items="I am, a handsome, man, and, have, a beautiful, girlfriend" delims="," var="chuoi">
-		<c:out value="${chuoi }"/><br>
-	</c:forTokens>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xl-3 col-sm-4"
+				style="height: 100px; background-color: red"></div>
+
+			<div class="col-xl-3 col-sm-8"
+				style="height: 100px; background-color: blue"></div>
+
+			<div class="col-xl-3 col-sm-7"
+				style="height: 100px; background-color: green"></div>
+
+			<div class="col-xl-3 col-sm-5"
+				style="height: 100px; background-color: aqua;"></div>
+		</div>
+
+	</div>
+
+	<jsp:include page="footer.jsp" />
 </body>
 </html>
