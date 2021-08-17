@@ -14,6 +14,12 @@ public class Employee {
 		
 	}
 	
+	public Employee(String name, int age) {
+		super();
+		this.name = name;
+		this.age = age;
+	}
+
 	public int getIdEmp() {
 		return idEmp;
 	}

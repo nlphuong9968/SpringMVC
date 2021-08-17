@@ -64,8 +64,8 @@
 			<!-- /.container-fluid -->
 		</nav>
 		<div class="event-header container wow animate__rubberBand" data-wow-duration="2s">
-			<span>from &nbsp&nbsp<strong>27/09</strong>&nbsp&nbsp to
-				&nbsp&nbsp<strong>27/10</strong></span><br /> <span
+			<span>from <strong>27/09</strong> to
+				<strong>27/10</strong></span><br /> <span
 				style="font-size: 50px;">Buy ONE Get ONE</span><br />
 			<button>GET INFO</button>
 		</div>
@@ -215,9 +215,11 @@
 
 			<div class="col-sm-4 col-md-4 wow animate__heartBeat" >
 				<p><span class="title-footer">Feedback</span></p>
-				<input class="footer-input" type="text" placeholder="Email">
-				<textarea class="footer-input" rows="4" cols="50" placeholder="Content"></textarea>
-				<button class="material-primary-button">Submit</button>
+				<form action="" method="post">
+					<input class="footer-input" name="name" type="text" placeholder="Email">
+					<textarea class="footer-input" name="age" rows="4" cols="50" placeholder="Content"></textarea>
+					<button class="material-primary-button">Submit</button>
+				</form>
 			</div>
 		</div>
 	</div>
