@@ -27,26 +27,35 @@ public class homePageController {
 	public String Default(ModelMap modelMap) {
 		
 		Session session = sessionFactory.getCurrentSession();
-		String sql = "from Employee";
-		List<Employee> empList = session.createQuery(sql).getResultList();
+		//Update data
+		//cach 1
 		
-		for (Employee emp : empList) {
-			System.out.println("Name: " +emp.getName());
-		}
+//		Employee emp = new Employee("sam", 30);
+//		
+//		emp.setIdEmp(5);
+//		
+//		emp.setName("John");
+//		emp.setAge(29);
+//		
+//		session.update(emp);
+		
+		//cach 2
+//		Employee emp = (Employee) session.createQuery(" from Employee Where idEmp = 5").uniqueResult();
+//		
+//		emp.setName("Josh");
+//		
+//		session.update(emp);
+		
+		//cach 3 with condition is ID
+		Employee emp = (Employee) session.get(Employee.class, 5);
+		
+		emp.setName("John");
+		
+		session.update(emp);
 		
 		return "homePage";
 	}
 	
-	@PostMapping
-	@Transactional
-	public String addEmployee(@RequestParam String name, @RequestParam int age) {
-		Session session = sessionFactory.getCurrentSession();
-		
-		Employee emp = new Employee(name, age);
-		
-		session.save(emp);
-		
-		return "homePage";
-	}
+	
 		
 }
