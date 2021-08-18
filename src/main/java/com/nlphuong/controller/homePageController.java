@@ -1,6 +1,5 @@
 package com.nlphuong.controller;
 
-import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -9,9 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.nlphuong.entity.Employee;
 
@@ -47,11 +44,16 @@ public class homePageController {
 //		session.update(emp);
 		
 		//cach 3 with condition is ID
-		Employee emp = (Employee) session.get(Employee.class, 5);
+//		Employee emp = (Employee) session.get(Employee.class, 5);
+//		
+//		emp.setName("John");
+//		
+//		session.update(emp);
 		
-		emp.setName("John");
+		//Delete data
+		Employee emp = (Employee) session.get(Employee.class, 4);
 		
-		session.update(emp);
+		session.delete(emp);
 		
 		return "homePage";
 	}
