@@ -1,6 +1,9 @@
 package com.nlphuong.controller;
 
 
+import java.util.HashSet;
+import java.util.Set;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,16 +30,28 @@ public class homePageController {
 		Session session = sessionFactory.getCurrentSession();
 		
 		Product product = new Product();
-		product.setNamePro("chicken");
-		product.setPrice("100.000 VND");
+		product.setNamePro("Bread");
+		product.setPrice("20.000 VND");
+		
+		Product product1 = new Product();
+		product1.setNamePro("Soup");
+		product1.setPrice("50.000 VND");
+		
+		Product product2 = new Product();
+		product2.setNamePro("Buger");
+		product2.setPrice("60.000 VND");
+		
+		Set<Product> products = new HashSet<Product>();
+		products.add(product);
+		products.add(product1);
+		products.add(product2);
 		
 		Employee emp = new Employee();
-		emp.setName("nguyen phuong");
+		emp.setName("minh1");
 		emp.setAge(19);
+		emp.setProducts(products);
 		
-		product.setEmployee(emp);
-		
-		session.save(product);
+		session.save(emp);
 		
 		return "homePage";
 	}

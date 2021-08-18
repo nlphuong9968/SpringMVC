@@ -1,5 +1,7 @@
 package com.nlphuong.entity;
 
+import java.util.Set;
+
 import javax.persistence.*;
 
 @Entity(name = "Employee")
@@ -10,6 +12,9 @@ public class Employee {
 	private int idEmp;
 	private String name;
 	private int age;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Employee")
+	private Set<Product> products;
 	
 	public Employee() {
 		
@@ -40,6 +45,14 @@ public class Employee {
 	}
 	public void setAge(int age) {
 		this.age = age;
+	}
+
+	public Set<Product> getProducts() {
+		return products;
+	}
+
+	public void setProducts(Set<Product> products) {
+		this.products = products;
 	}
 
 }
