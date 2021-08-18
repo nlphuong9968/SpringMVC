@@ -6,9 +6,10 @@ import javax.persistence.*;
 public class Employee {
 	
 	@Id
-	int idEmp;
-	String name;
-	int age;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int idEmp;
+	private String name;
+	private int age;
 	
 	public Employee() {
 		

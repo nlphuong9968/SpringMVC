@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.nlphuong.entity.Employee;
+import com.nlphuong.entity.Product;
 
 @Controller
 @RequestMapping("/")
@@ -24,36 +25,18 @@ public class homePageController {
 	public String Default(ModelMap modelMap) {
 		
 		Session session = sessionFactory.getCurrentSession();
-		//Update data
-		//cach 1
 		
-//		Employee emp = new Employee("sam", 30);
-//		
-//		emp.setIdEmp(5);
-//		
-//		emp.setName("John");
-//		emp.setAge(29);
-//		
-//		session.update(emp);
+		Product product = new Product();
+		product.setNamePro("chicken");
+		product.setPrice("100.000 VND");
 		
-		//cach 2
-//		Employee emp = (Employee) session.createQuery(" from Employee Where idEmp = 5").uniqueResult();
-//		
-//		emp.setName("Josh");
-//		
-//		session.update(emp);
+		Employee emp = new Employee();
+		emp.setName("nguyen phuong");
+		emp.setAge(19);
 		
-		//cach 3 with condition is ID
-//		Employee emp = (Employee) session.get(Employee.class, 5);
-//		
-//		emp.setName("John");
-//		
-//		session.update(emp);
+		product.setEmployee(emp);
 		
-		//Delete data
-		Employee emp = (Employee) session.get(Employee.class, 4);
-		
-		session.delete(emp);
+		session.save(product);
 		
 		return "homePage";
 	}
