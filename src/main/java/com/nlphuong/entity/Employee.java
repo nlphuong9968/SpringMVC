@@ -13,7 +13,8 @@ public class Employee {
 	private String name;
 	private int age;
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Employee")
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "idEmp")
 	private Set<Product> products;
 	
 	public Employee() {
