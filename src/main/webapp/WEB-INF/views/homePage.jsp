@@ -1,5 +1,4 @@
 <%@page import="java.util.List"%>
-<%@page import="com.nlphuong.entity.Employee"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -53,7 +52,7 @@
 					</ul>
 
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#">Sign in</a></li>
+						<li><a href="login/">Sign in</a></li>
 						<li><a href="#">Sign up</a></li>
 						<li><a href="#"><img
 								src='<c:url value="/resources/img/shopping-cart.png" />' /></a></li>
