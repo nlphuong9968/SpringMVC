@@ -66,12 +66,12 @@
 					<div class="col-md-5 col-md-offset-1">
 						<div class="login_topimg"></div>
 						<div class="wrap-login100">
-							<form class="login100-form validate-form">
+							<form action="" method="post" class="login100-form validate-form">
 								<span class="login100-form-title "> Login </span> <span
 									class="login100-form-subtitle m-b-16"> to your account </span>
 								<div class="wrap-input100 validate-input m-b-16"
 									data-validate="Valid email is required: ex@abc.xyz">
-									<input class="input100" type="text" name="Username"
+									<input class="input100" type="text" name="username"
 										placeholder="Username or Email"> <span
 										class="focus-input100"></span> <span class="symbol-input100">
 										<span class="glyphicon glyphicon-user"></span>
@@ -79,7 +79,7 @@
 								</div>
 								<div class="wrap-input100 validate-input m-b-16"
 									data-validate="Password is required">
-									<input class="input100" type="password" name="pass"
+									<input class="input100" type="password" name="password"
 										placeholder="Password"> <span class="focus-input100"></span>
 									<span class="symbol-input100"> <span
 										class="glyphicon glyphicon-lock"></span>
