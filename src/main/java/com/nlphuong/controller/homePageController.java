@@ -28,8 +28,8 @@ public class homePageController {
 	public String Default(ModelMap modelMap) {
 		
 		Session session = sessionFactory.getCurrentSession();
-		
-		Product product = new Product();
+//		many product to one employee
+/*		Product product = new Product();
 		product.setNamePro("Bread");
 		product.setPrice("20.000 VND");
 		
@@ -52,6 +52,33 @@ public class homePageController {
 		emp.setProducts(products);
 		
 		session.save(emp);
+
+*/
+//		many employee to one product
+		Product product = new Product();
+		product.setNamePro("Cake");
+		product.setPrice("20.000 VND");
+		
+		Employee emp = new Employee();
+		emp.setName("A");
+		emp.setAge(10);
+		
+		Employee emp1 = new Employee();
+		emp1.setName("B");
+		emp1.setAge(11);
+		
+		Employee emp2 = new Employee();
+		emp2.setName("C");
+		emp2.setAge(12);
+		
+		Set<Employee> employees = new HashSet<Employee>();
+		employees.add(emp);
+		employees.add(emp1);
+		employees.add(emp2);
+		
+		product.setEmployees(employees);
+		
+		session.save(product);
 		
 		return "homePage";
 	}

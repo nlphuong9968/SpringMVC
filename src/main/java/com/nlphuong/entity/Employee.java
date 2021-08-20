@@ -13,8 +13,10 @@ public class Employee {
 	private String name;
 	private int age;
 	
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "idEmp")
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "EmployeeProduct",
+				joinColumns = {@JoinColumn(name = "idEmployee", referencedColumnName = "idEmp")},
+				inverseJoinColumns = {@JoinColumn(name = "idProduct", referencedColumnName = "idPro")})
 	private Set<Product> products;
 	
 	public Employee() {

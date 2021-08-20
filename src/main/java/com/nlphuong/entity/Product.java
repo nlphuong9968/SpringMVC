@@ -1,12 +1,12 @@
 package com.nlphuong.entity;
 
+import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Entity(name="Product")
 public class Product {
@@ -17,9 +17,11 @@ public class Product {
 	private String namePro;
 	private String price;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "idEmp")
-	Employee employee;
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "EmployeeProduct",
+				joinColumns = {@JoinColumn(name = "idProduct", referencedColumnName = "idPro")},
+				inverseJoinColumns = {@JoinColumn(name = "idEmployee", referencedColumnName = "idEmp")})
+	private Set<Employee> employees;
 	
 	public int getIdPro() {
 		return idPro;
@@ -39,10 +41,16 @@ public class Product {
 	public void setPrice(String price) {
 		this.price = price;
 	}
-	public Employee getEmployee() {
-		return employee;
+//	public Employee getEmployee() {
+//		return employee;
+//	}
+//	public void setEmployee(Employee employee) {
+//		this.employee = employee;
+//	}
+	public Set<Employee> getEmployees() {
+		return employees;
 	}
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
+	public void setEmployees(Set<Employee> employees) {
+		this.employees = employees;
 	}
 }
