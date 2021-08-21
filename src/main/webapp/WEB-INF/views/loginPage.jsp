@@ -98,6 +98,7 @@
 								<div class="container-login100-form-btn p-t-25">
 									<button class="login100-form-btn">Login</button>
 								</div>
+								<span>${checkLogin }</span>
 							</form>
 						</div>
 					</div>

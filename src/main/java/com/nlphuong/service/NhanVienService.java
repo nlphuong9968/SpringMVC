@@ -4,10 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.nlphuong.dao.NhanVienDAO;
-import com.nlphuong.daoImpl.NhanVienImpl;
+
 
 @Service
-public class NhanVienService implements NhanVienImpl{
+public class NhanVienService implements NhanVienDAO{
 
 	@Autowired
 	NhanVienDAO nhanVienDAO;
