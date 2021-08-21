@@ -3,9 +3,26 @@ $(document).ready(function() {
 		$(this).addClass("active");
 	});
 
-	$("#col1").click(function() {
-		var str = $("#col1").attr("data-text");
-		alert(str);
+	$("#btnLogin").click(function() {
+		var email = $("#email").val();
+		var password = $("#password").val();
+		
+		$.ajax({
+			url:"/minishop/api/CheckLogin",
+			type:"GET",
+			data: {
+				email: email,
+				password: password
+			},
+			success: function(value){
+				if(value == "true"){
+                    $('#result').text("success!");
+				}else{
+                    $('#result').text("false!");
+				}
+				
+			}
+		});
 	});
 
 })

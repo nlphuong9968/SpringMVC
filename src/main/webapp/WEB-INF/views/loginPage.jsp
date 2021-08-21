@@ -8,54 +8,6 @@
 <title>Insert title here</title>
 <jsp:include page="header.jsp" />
 </head>
-<%-- <body id="body-login">
-	<div id="body-flex-login">
-		<div id="container-login">
-		
-			<div id="container-login-left">
-				<div id="header-top-left" class="header-login">
-					<span id="text-logo" >Welcome</span><br /> 
-					<span id="hint-text-logo" >Hãy tạo nên phong cách của
-						bạn cùng Minishop!</span>
-				</div>
-				<div id="header-bottom-left" >
-					<p>
-						<img alt="icon_oval" src='<c:url value="/resources/img/mirror.png"/>' >
-						<span>Luôn cập nhật xu hướng thời trang mới nhất </span>
-					</p>
-					<p>
-						<img alt="icon_oval" src='<c:url value="/resources/img/mirror.png"/>' >
-						<span>Giảm hơn 50% tất cả các mặt hàng giành cho khách VIP
-						</span>
-					</p>
-					<p>
-						<img alt="icon_oval" src='<c:url value="/resources/img/mirror.png"/>' >
-						<span>Tận tình tư vấn để tạo nên phong cách của bạn </span>
-					</p>
-				</div>
-			</div>
-
-			<div id="container-login-right">
-				<div id="header-top-right" class="header-login">
-					<span class="active">Sign In</span> / <span>Sign Up</span>
-				</div>
-				<div id="container-center-login-right">
-					<form action="">
-						<input class="material-textinput input-icon-email" type="text" placeholder="Email"/><br/>
-						<input class="material-textinput input-icon-password" type="text" placeholder="Password"/><br/>
-						<input class="material-primary-button" type="submit" value="Sign-In"/><br/>
-					</form>
-				</div>				
-				<div id="container-social-login">
-					<img alt="icon_oval" src='<c:url value="/resources/img/facebook.png"/>' >
-					<img alt="icon_oval" src='<c:url value="/resources/img/google.png"/>' >
-				</div>
-			</div>
-			
-		</div>
-	</div>
-<jsp:include page="footer.jsp" />
-</body> --%>
 <body>
 	<div class="limiter" id="login">
 		<div class="container-login100"
@@ -71,7 +23,7 @@
 									class="login100-form-subtitle m-b-16"> to your account </span>
 								<div class="wrap-input100 validate-input m-b-16"
 									data-validate="Valid email is required: ex@abc.xyz">
-									<input class="input100" type="text" name="email"
+									<input class="input100" type="text" name="email" id="email"
 										placeholder="Email"> <span
 										class="focus-input100"></span> <span class="symbol-input100">
 										<span class="glyphicon glyphicon-envelope"></span>
@@ -79,7 +31,7 @@
 								</div>
 								<div class="wrap-input100 validate-input m-b-16"
 									data-validate="Password is required">
-									<input class="input100" type="password" name="password"
+									<input class="input100" type="password" id="password" name="password"
 										placeholder="Password"> <span class="focus-input100"></span>
 									<span class="symbol-input100"> <span
 										class="glyphicon glyphicon-lock"></span>
@@ -96,9 +48,9 @@
 									</div>
 								</div>
 								<div class="container-login100-form-btn p-t-25">
-									<button class="login100-form-btn">Login</button>
+									<p id="btnLogin" class="login100-form-btn">Login</p>
+									<span id="result"></span>
 								</div>
-								<span>${checkLogin }</span>
 							</form>
 						</div>
 					</div>
