@@ -1,6 +1,6 @@
 package com.nlphuong.controller;
 
-import org.hibernate.Session;
+
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.nlphuong.entity.NhanVien;
+import com.nlphuong.service.NhanVienService;
 
 @Controller
 @RequestMapping("login/")
@@ -18,6 +18,9 @@ public class loginPageController {
 	
 	@Autowired
 	SessionFactory sessionFactory;
+	
+	@Autowired
+	NhanVienService nhanVienService;
 
 	@GetMapping
 	public String Default() {
@@ -26,19 +29,16 @@ public class loginPageController {
 	
 	@PostMapping
 	@Transactional
-	public String loginProcess(@RequestParam String username, @RequestParam String password) {
-
-		Session session = sessionFactory.getCurrentSession();
-		try {
-			NhanVien nhanVien =  (NhanVien) session.createQuery(" FROM NHANVIEN WHERE tendangnhap = '"+ username 
-													+ "' AND matkhau = '"+ password + "'").getSingleResult();
-			if(nhanVien != null) {
-				System.out.println("Login successfull");
-			}
-		}catch (Exception e) {
+	public String loginProcess(@RequestParam String email, @RequestParam String password) {
+		
+		boolean check = nhanVienService.checkLogin(email, password);
+		if(check) {
+			System.out.println("Login success");
+		}else {
 			System.out.println("Login fail!");
 		}
 		
 		return "loginPage";
+		
 	}
 }
