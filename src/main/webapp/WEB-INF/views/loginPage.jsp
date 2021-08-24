@@ -89,8 +89,6 @@
 									</div>
 									<div class="container-login100-form-btn p-t-25">
 										<p id="btnLogin" class="login100-form-btn">Register</p>
-
-
 									</div>
 								</form>
 							</div>

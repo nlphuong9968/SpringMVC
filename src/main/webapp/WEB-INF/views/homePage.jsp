@@ -52,7 +52,15 @@
 					</ul>
 
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="login/">Sign in</a></li>
+					<c:choose>
+						<c:when test="${firstChar != null }">
+							<li><a class="circle-avatar" href="login/"><span>${firstChar }</span> </a></li>
+						</c:when>
+						<c:otherwise>
+							<li><a href="login/">Sign in</a></li>
+						</c:otherwise>
+					</c:choose>
+						
 						<li><a href="#"><img
 								src='<c:url value="/resources/img/shopping-cart.png" />' /></a></li>
 					</ul>

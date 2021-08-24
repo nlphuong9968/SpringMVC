@@ -17,6 +17,9 @@ $(document).ready(function() {
 			success: function(value){
 				if(value == "true"){
                     $('#result').text("success!");
+                    currentPath = window.location.href;
+                    path = currentPath.replace("login/","");
+                    window.location = path;
 				}else{
                     $('#result').text("false!");
 				}
