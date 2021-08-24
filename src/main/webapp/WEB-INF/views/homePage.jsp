@@ -53,7 +53,6 @@
 
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="login/">Sign in</a></li>
-						<li><a href="#">Sign up</a></li>
 						<li><a href="#"><img
 								src='<c:url value="/resources/img/shopping-cart.png" />' /></a></li>
 					</ul>

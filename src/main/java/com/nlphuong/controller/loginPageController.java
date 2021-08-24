@@ -11,15 +11,14 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
 @RequestMapping("login/")
-//@SessionAttributes("email")
 public class loginPageController {
 	
 	@Autowired
 	SessionFactory sessionFactory;
 
 	@GetMapping
-	public String Default(@SessionAttribute("email") String email) {
-		System.out.println(email);
+	public String Default() {
+		
 		return "loginPage";
 	}
 	

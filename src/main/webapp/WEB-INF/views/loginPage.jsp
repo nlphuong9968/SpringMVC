@@ -18,41 +18,83 @@
 					<div class="col-md-5 col-md-offset-1">
 						<div class="login_topimg"></div>
 						<div class="wrap-login100">
-							<form action="" method="post" class="login100-form validate-form">
-								<span class="login100-form-title "> Login </span> <span
-									class="login100-form-subtitle m-b-16"> to your account </span>
-								<div class="wrap-input100 validate-input m-b-16"
-									data-validate="Valid email is required: ex@abc.xyz">
-									<input class="input100" type="text" name="email" id="email"
-										placeholder="Email"> <span
-										class="focus-input100"></span> <span class="symbol-input100">
-										<span class="glyphicon glyphicon-envelope"></span>
-									</span>
-								</div>
-								<div class="wrap-input100 validate-input m-b-16"
-									data-validate="Password is required">
-									<input class="input100" type="password" id="password" name="password"
-										placeholder="Password"> <span class="focus-input100"></span>
-									<span class="symbol-input100"> <span
-										class="glyphicon glyphicon-lock"></span>
-									</span>
-								</div>
-								<div class="flex-sb-m w-full p-b-30">
-									<div class="contact100-form-checkbox">
-										<input class="input-checkbox100" id="ckb1" type="checkbox"
-											name="remember-me"> <label class="label-checkbox100"
-											for="ckb1"> Remember me </label>
+							<div class="login100-form-title actived" style="cursor: pointer">
+								<span class="active" id="signin">Login</span> <span>/</span> <span id="signup">Register</span>
+							</div>
+							<span class="login100-form-subtitle m-b-16"> to your
+								account </span>
+							<div id="container-signin">
+								<form action="" method="post"
+									class="login100-form validate-form">
+									<div class="wrap-input100 validate-input m-b-16"
+										data-validate="Valid email is required: ex@abc.xyz">
+										<input class="input100" type="text" name="email" id="email"
+											placeholder="Email"> <span class="focus-input100"></span>
+										<span class="symbol-input100"> <span
+											class="glyphicon glyphicon-envelope"></span>
+										</span>
 									</div>
-									<div>
-										<a href="#" class="txt1"> Forgot Password? </a>
+									<div class="wrap-input100 validate-input m-b-16"
+										data-validate="Password is required">
+										<input class="input100" type="password" id="password"
+											name="password" placeholder="Password"> <span
+											class="focus-input100"></span> <span class="symbol-input100">
+											<span class="glyphicon glyphicon-lock"></span>
+										</span>
 									</div>
-								</div>
-								<div class="container-login100-form-btn p-t-25">
-									<p id="btnLogin" class="login100-form-btn">Login</p>
-									<span id="result"></span>
-									<span>${email }</span>
-								</div>
-							</form>
+									<div class="flex-sb-m w-full p-b-30">
+										<div class="contact100-form-checkbox">
+											<input class="input-checkbox100" id="ckb1" type="checkbox"
+												name="remember-me"> <label class="label-checkbox100"
+												for="ckb1"> Remember me </label>
+										</div>
+										<div>
+											<a href="#" class="txt1"> Forgot Password? </a>
+										</div>
+									</div>
+									<div class="container-login100-form-btn p-t-25">
+										<p id="btnLogin" class="login100-form-btn">Login</p>
+										<span id="result"></span>
+
+									</div>
+								</form>
+							</div>
+							<div id="container-signup">
+								<form action="" method="post"
+									class="login100-form validate-form">
+
+									<div class="wrap-input100 validate-input m-b-16"
+										data-validate="Valid email is required: ex@abc.xyz">
+										<input class="input100" type="text" name="email" id="email"
+											placeholder="Email"> <span class="focus-input100"></span>
+										<span class="symbol-input100"> <span
+											class="glyphicon glyphicon-envelope"></span>
+										</span>
+									</div>
+									<div class="wrap-input100 validate-input m-b-16"
+										data-validate="Password is required">
+										<input class="input100" type="password" id="password"
+											name="password" placeholder="Password"> <span
+											class="focus-input100"></span> <span class="symbol-input100">
+											<span class="glyphicon glyphicon-lock"></span>
+										</span>
+									</div>
+									<div class="wrap-input100 validate-input m-b-16"
+										data-validate="Password is required">
+										<input class="input100" type="password" id="password"
+											name="password" placeholder="Confirm Password"> <span
+											class="focus-input100"></span> <span class="symbol-input100">
+											<span class="glyphicon glyphicon-lock"></span>
+										</span>
+									</div>
+									<div class="container-login100-form-btn p-t-25">
+										<p id="btnLogin" class="login100-form-btn">Register</p>
+
+
+									</div>
+								</form>
+							</div>
+							<span id="result"></span>
 						</div>
 					</div>
 				</div>

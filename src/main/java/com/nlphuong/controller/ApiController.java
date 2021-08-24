@@ -13,7 +13,7 @@ import com.nlphuong.service.NhanVienService;
 
 @Controller
 @RequestMapping("api/")
-@SessionAttributes("email")
+
 public class ApiController {
 
 	@Autowired

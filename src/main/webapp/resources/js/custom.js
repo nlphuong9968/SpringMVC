@@ -24,5 +24,16 @@ $(document).ready(function() {
 			}
 		});
 	});
-
+	$("#signin").click(function(){
+		$(this).addClass("active");
+		$("#signup").removeClass("active");
+		$("#container-signin").show();
+		$("#container-signup").hide();
+	})
+	$("#signup").click(function(){
+		$(this).addClass("active");
+		$("#signin").removeClass("active");
+		$("#container-signin").hide();
+		$("#container-signup").show();
+	})
 })
