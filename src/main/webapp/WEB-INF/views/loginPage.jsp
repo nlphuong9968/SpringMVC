@@ -50,6 +50,7 @@
 								<div class="container-login100-form-btn p-t-25">
 									<p id="btnLogin" class="login100-form-btn">Login</p>
 									<span id="result"></span>
+									<span>${email }</span>
 								</div>
 							</form>
 						</div>
