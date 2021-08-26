@@ -52,15 +52,16 @@
 					</ul>
 
 					<ul class="nav navbar-nav navbar-right">
-					<c:choose>
-						<c:when test="${firstChar != null }">
-							<li><a class="circle-avatar" href="login/"><span>${firstChar }</span> </a></li>
-						</c:when>
-						<c:otherwise>
-							<li><a href="login/">Sign in</a></li>
-						</c:otherwise>
-					</c:choose>
-						
+						<c:choose>
+							<c:when test="${firstChar != null }">
+								<li><a class="circle-avatar" href="login/"><span>${firstChar }</span>
+								</a></li>
+							</c:when>
+							<c:otherwise>
+								<li><a href="login/">Sign in</a></li>
+							</c:otherwise>
+						</c:choose>
+
 						<li><a href="#"><img
 								src='<c:url value="/resources/img/shopping-cart.png" />' /></a></li>
 					</ul>
@@ -69,23 +70,25 @@
 			</div>
 			<!-- /.container-fluid -->
 		</nav>
-		<div class="event-header container wow animate__rubberBand" data-wow-duration="2s">
-			<span>from <strong>27/09</strong> to
-				<strong>27/10</strong></span><br /> <span
-				style="font-size: 50px;">Buy ONE Get ONE</span><br />
+		<div class="event-header container wow animate__rubberBand"
+			data-wow-duration="2s">
+			<span>from <strong>27/09</strong> to <strong>27/10</strong></span><br />
+			<span style="font-size: 50px;">Buy ONE Get ONE</span><br />
 			<button>GET INFO</button>
 		</div>
 	</div>
 
 	<div id="info" class="container">
-		<div class="col-12 col-sm-4 col-md-4 wow animate__fadeInLeft" data-wow-duration="1s" >
+		<div class="col-12 col-sm-4 col-md-4 wow animate__fadeInLeft"
+			data-wow-duration="1s">
 			<img class="icon" alt=""
 				src='<c:url value="/resources/img/quality.png" />' /><br /> <span
 				style="font-size: 32px; font-weight: 500;">Quality</span><br /> <span>Committed
 				to bring you the best quality products</span><br />
 		</div>
 
-		<div class="col-12 col-sm-4 col-md-4 wow animate__fadeInDown" data-wow-duration="1s" data-wow-delay="1s">
+		<div class="col-12 col-sm-4 col-md-4 wow animate__fadeInDown"
+			data-wow-duration="1s" data-wow-delay="1s">
 			<img class="icon" alt=""
 				src='<c:url value="/resources/img/piggy-bank.png" />' /><br /> <span
 				style="font-size: 32px; font-weight: 500;">Cost savings</span><br />
@@ -93,7 +96,8 @@
 				20% of the cost</span><br />
 		</div>
 
-		<div class="col-12 col-sm-4 col-md-4 wow animate__fadeInUp" data-wow-duration="1s"data-wow-delay="2s">
+		<div class="col-12 col-sm-4 col-md-4 wow animate__fadeInUp"
+			data-wow-duration="1s" data-wow-delay="2s">
 			<img class="icon" alt=""
 				src='<c:url value="/resources/img/fast-delivery.png" />' /><br />
 			<span style="font-size: 32px; font-weight: 500;">Delivery</span><br />
@@ -105,6 +109,50 @@
 		<span>Hot Products</span>
 		<div class="row">
 
+			<c:forEach var="sp" items="${lstSanPham }">
+				<div class="col-md-3 col-sm-6">
+					<div class="product wow animate__bounceIn">
+						<img alt="" src='<c:url value="/resources/img/product/${sp.getHinhsanpham() }" />' />
+						<span class="title-card">${sp.getTensanpham()}</span> <span class="price"> ${sp.getGiatien()}
+							VND</span>
+					</div>
+				</div>
+			</c:forEach>
+
+
+
+			<%-- <div class="col-md-3 col-sm-6" >
+				<div class="product wow animate__bounceIn">
+					<img alt="" src='<c:url value="/resources/img/dress01.png" />' /><br />
+					<span>Caro skirt</span><br /> <span class="price">150.000
+						VND</span>
+				</div>
+			</div>
+			
+			<div class="col-md-3 col-sm-6" >
+				<div class="product wow animate__bounceIn">
+					<img alt="" src='<c:url value="/resources/img/dress01.png" />' /><br />
+					<span>Caro skirt</span><br /> <span class="price">150.000
+						VND</span>
+				</div>
+			</div>
+			
+			<div class="col-md-3 col-sm-6" >
+				<div class="product wow animate__bounceIn">
+					<img alt="" src='<c:url value="/resources/img/dress01.png" />' /><br />
+					<span>Caro skirt</span><br /> <span class="price">150.000
+						VND</span>
+				</div>
+			</div>
+			
+			<div class="col-md-3 col-sm-6" >
+				<div class="product wow animate__bounceIn">
+					<img alt="" src='<c:url value="/resources/img/dress01.png" />' /><br />
+					<span>Caro skirt</span><br /> <span class="price">150.000
+						VND</span>
+				</div>
+			</div>
+			
 			<div class="col-md-3 col-sm-6" >
 				<div class="product wow animate__bounceIn">
 					<img alt="" src='<c:url value="/resources/img/dress01.png" />' /><br />
@@ -159,71 +207,43 @@
 					<span>Caro skirt</span><br /> <span class="price">150.000
 						VND</span>
 				</div>
-			</div>
-			
-			<div class="col-md-3 col-sm-6" >
-				<div class="product wow animate__bounceIn">
-					<img alt="" src='<c:url value="/resources/img/dress01.png" />' /><br />
-					<span>Caro skirt</span><br /> <span class="price">150.000
-						VND</span>
-				</div>
-			</div>
-			
-			<div class="col-md-3 col-sm-6" >
-				<div class="product wow animate__bounceIn">
-					<img alt="" src='<c:url value="/resources/img/dress01.png" />' /><br />
-					<span>Caro skirt</span><br /> <span class="price">150.000
-						VND</span>
-				</div>
-			</div>
-			
-			<div class="col-md-3 col-sm-6" >
-				<div class="product wow animate__bounceIn">
-					<img alt="" src='<c:url value="/resources/img/dress01.png" />' /><br />
-					<span>Caro skirt</span><br /> <span class="price">150.000
-						VND</span>
-				</div>
-			</div>
-			
-			<div class="col-md-3 col-sm-6" >
-				<div class="product wow animate__bounceIn">
-					<img alt="" src='<c:url value="/resources/img/dress01.png" />' /><br />
-					<span>Caro skirt</span><br /> <span class="price">150.000
-						VND</span>
-				</div>
-			</div>
+			</div> --%>
 
-			<div class="col-md-3 col-sm-6" >
-				<div class="product wow animate__bounceIn">
-					<img alt="" src='<c:url value="/resources/img/dress01.png" />' /><br />
-					<span>Caro skirt</span><br /> <span class="price">150.000
-						VND</span>
-				</div>
-			</div>
-			
 			<!-- end product -->
 		</div>
 	</div>
 
 	<div id="footer" class="container-fluid">
 		<div class="row">
-			<div class="col-sm-4 col-md-4 wow animate__heartBeat" >
-				<p><span class="title-footer">Shop Info</span></p>
-				<span>FASHION SHOPS THE online wholesale Marketplace for fashion professional actors and decision makers. A large range of women, men and kids’ garments, as well as of shoes, bags and accessories Brands provided by Paris and Aubervilliers best wholesalers.</span>
+			<div class="col-sm-4 col-md-4 wow animate__heartBeat">
+				<p>
+					<span class="title-footer">Shop Info</span>
+				</p>
+				<span>FASHION SHOPS THE online wholesale Marketplace for
+					fashion professional actors and decision makers. A large range of
+					women, men and kids’ garments, as well as of shoes, bags and
+					accessories Brands provided by Paris and Aubervilliers best
+					wholesalers.</span>
 			</div>
 
-			<div class="col-sm-4 col-md-4 wow animate__heartBeat" >
-				<p><span class="title-footer">Contact</span></p>
-				<span>- Head office : 91 rue du Faubourg-Saint-Honoré 75008 ParisS.A.S. with 470 975,00 euros capital </span><br>
-				<span>- R.C.S. Paris 819 963 919</span><br>
-				<span>- Nguyen Linh Phuong</span><br>
+			<div class="col-sm-4 col-md-4 wow animate__heartBeat">
+				<p>
+					<span class="title-footer">Contact</span>
+				</p>
+				<span>- Head office : 91 rue du Faubourg-Saint-Honoré 75008
+					ParisS.A.S. with 470 975,00 euros capital </span><br> <span>-
+					R.C.S. Paris 819 963 919</span><br> <span>- Nguyen Linh Phuong</span><br>
 			</div>
 
-			<div class="col-sm-4 col-md-4 wow animate__heartBeat" >
-				<p><span class="title-footer">Feedback</span></p>
+			<div class="col-sm-4 col-md-4 wow animate__heartBeat">
+				<p>
+					<span class="title-footer">Feedback</span>
+				</p>
 				<form action="" method="post">
-					<input class="footer-input" name="name" type="text" placeholder="Email">
-					<textarea class="footer-input" name="age" rows="4" cols="50" placeholder="Content"></textarea>
+					<input class="footer-input" name="name" type="text"
+						placeholder="Email">
+					<textarea class="footer-input" name="age" rows="4" cols="50"
+						placeholder="Content"></textarea>
 					<button class="material-primary-button">Submit</button>
 				</form>
 			</div>

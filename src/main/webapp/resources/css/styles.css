@@ -593,7 +593,7 @@ input {
 }
 
 #title-product {
-	margin-top: 100px;
+	margin-top: 50px;
 	text-align: center;
 	font-size: 32px;
 	font-weight: 500;
@@ -667,6 +667,18 @@ a.circle-avatar:hover {
 	margin-bottom: 15px !important;
 }
 
+.title-card{
+	-webkit-line-clamp: 3;
+    position: relative;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 22px;
+    padding: 5px;
+    height: 48px;
+}
 
 /* end css home page*/
 
