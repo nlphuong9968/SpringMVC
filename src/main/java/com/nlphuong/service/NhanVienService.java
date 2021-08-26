@@ -4,13 +4,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.nlphuong.dao.NhanVienDAO;
+import com.nlphuong.daoImpl.NhanVienImpl;
+import com.nlphuong.entity.NhanVien;
 
 
 @Service
 public class NhanVienService implements NhanVienDAO{
 
 	@Autowired
-	NhanVienDAO nhanVienDAO;
+	NhanVienImpl nhanVienImpl;
 	
 	public void getListNhanVien() {
 		System.out.println("here is service");
@@ -18,8 +20,14 @@ public class NhanVienService implements NhanVienDAO{
 
 	@Override
 	public boolean checkLogin(String email, String password) {
-		boolean check = nhanVienDAO.checkLogin(email, password);
+		boolean check = nhanVienImpl.checkLogin(email, password);
 		return check;
+	}
+
+	@Override
+	public boolean addNhanVien(NhanVien nhanVien) {
+		boolean flagAdd = nhanVienImpl.addNhanVien(nhanVien);
+		return flagAdd;
 	}
 	
 	

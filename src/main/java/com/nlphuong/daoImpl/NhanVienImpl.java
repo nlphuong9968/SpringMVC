@@ -34,4 +34,17 @@ public class NhanVienImpl implements NhanVienDAO{
 			return false;
 		}
 	}
+
+	@Override
+	@Transactional
+	public boolean addNhanVien(NhanVien nhanVien) {
+		Session session = sessionFactory.getCurrentSession();		
+		int manhanvien = (int) session.save(nhanVien);	
+		
+		if(manhanvien > 0) {
+			return true;
+		}else {
+			return false;
+		}
+	}
 }

@@ -21,9 +21,9 @@ public class homePageController {
 	@GetMapping
 	@Transactional
 	public String Default(ModelMap modelMap, HttpSession httpSession) {
-		if(httpSession.getAttribute("email") != null) {
-			String email = (String) httpSession.getAttribute("email");
-			String firstChar = email.substring(0,1);
+		String email = (String) httpSession.getAttribute("email");
+		if(!email.isEmpty()) {
+			Character firstChar = email.charAt(0);
 			modelMap.addAttribute("firstChar", firstChar);
 		}
 		
