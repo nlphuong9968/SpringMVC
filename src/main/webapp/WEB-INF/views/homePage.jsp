@@ -111,11 +111,14 @@
 
 			<c:forEach var="sp" items="${lstSanPham }">
 				<div class="col-md-3 col-sm-6">
-					<div class="product wow animate__bounceIn">
-						<img alt="" src='<c:url value="/resources/img/product/${sp.getHinhsanpham() }" />' />
-						<span class="title-card">${sp.getTensanpham()}</span> <span class="price"> ${sp.getGiatien()}
-							VND</span>
-					</div>
+					<a href="detail/${sp.getMasanpham() }">
+						<div class="product wow animate__bounceIn">
+							<img alt=""
+								src='<c:url value="/resources/img/product/${sp.getHinhsanpham() }" />' />
+							<span class="title-card">${sp.getTensanpham()}</span> <span
+								class="price"> ${sp.getGiatien()} VND</span>
+						</div>
+					</a>
 				</div>
 			</c:forEach>
 

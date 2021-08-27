@@ -22,4 +22,10 @@ public class SanPhamService implements SanPhamDAO{
 		
 	}
 
+	@Override
+	public SanPham getProductDetailByMaSP(int masanpham) {
+		
+		return sanPhamImpl.getProductDetailByMaSP(masanpham);
+	}
+
 }

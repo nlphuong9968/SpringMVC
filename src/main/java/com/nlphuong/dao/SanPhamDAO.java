@@ -7,4 +7,6 @@ import com.nlphuong.entity.SanPham;
 public interface SanPhamDAO {
 
 	List<SanPham> getListProductLimit(int start);
+	
+	SanPham getProductDetailByMaSP(int masanpham);
 }

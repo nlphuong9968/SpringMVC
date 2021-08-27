@@ -11,23 +11,38 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.nlphuong.dao.SanPhamDAO;
+import com.nlphuong.entity.ChiTietSanPham;
 import com.nlphuong.entity.SanPham;
 
 @Repository
 @Scope(proxyMode = ScopedProxyMode.TARGET_CLASS)
-public class SanPhamImpl implements SanPhamDAO{
+public class SanPhamImpl implements SanPhamDAO {
 
 	@Autowired
 	SessionFactory sessionFactory;
-	
+
 	@Override
 	@Transactional
 	public List<SanPham> getListProductLimit(int start) {
 		Session session = sessionFactory.getCurrentSession();
-		
-		List<SanPham> listSanPhams = (List<SanPham>) session.createQuery("from SANPHAM").setFirstResult(0).setMaxResults(8).getResultList();
-		
+
+		List<SanPham> listSanPhams = (List<SanPham>) session.createQuery("from SANPHAM").setFirstResult(0)
+				.setMaxResults(8).getResultList();
+
 		return listSanPhams;
+	}
+
+	@Override
+	@Transactional
+	public SanPham getProductDetailByMaSP(int masanpham) {
+		Session session = sessionFactory.getCurrentSession();
+		String query = "FROM SANPHAM where masanpham = "+masanpham;
+
+		SanPham sanPham = (SanPham) session.createQuery(query).getSingleResult();
+		
+//		System.out.println(sanPham.getChiTietSanPhams());
+
+		return sanPham;
 	}
 
 }

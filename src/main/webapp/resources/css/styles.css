@@ -1,11 +1,15 @@
 @charset "UTF-8";
 
-/* login */
+/*  */
 html, body {
 	width: 100%;
 	height: 100%;
 	font-family: Roboto;
 	font-size: 14px;
+}
+
+img{
+	max-width: 100%
 }
 
 #body-login {
@@ -681,6 +685,14 @@ a.circle-avatar:hover {
 }
 
 /* end css home page*/
+
+/* start css detail page */
+
+#header-detail{
+	background-color: black;
+}
+
+/* end css detail page */
 
 /* Extra small devices (portrait phones, less than 576px) */
 @media ( max-width : 575.98px) {
