@@ -74,7 +74,7 @@
 			data-wow-duration="2s">
 			<span>from <strong>27/09</strong> to <strong>27/10</strong></span><br />
 			<span style="font-size: 50px;">Buy ONE Get ONE</span><br />
-			<button>GET INFO</button>
+			<button class="btn">GET INFO</button>
 		</div>
 	</div>
 

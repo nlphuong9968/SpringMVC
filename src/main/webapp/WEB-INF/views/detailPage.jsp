@@ -77,16 +77,34 @@
 
 			<div class="col-sm-2 col-md-2">
 				<h3>Danh muc SP</h3>
-				<ul>
-					<li>danh muc</li>
-					<li>danh muc</li>
+				<ul class="menu-detail">
+					<li>danh muc
+						<ul>
+							<li>danh muc</li>
+							<li>danh muc</li>
+							<li>danh muc</li>
+							<li>danh muc</li>
+						</ul>
+					</li>
+					<li>danh muc
+						<ul>
+							<li>danh muc
+								<ul>
+									<li>danh muc</li>
+									<li>danh muc</li>
+									<li>danh muc</li>
+									<li>danh muc</li>
+								</ul>
+							</li>
+							<li>danh muc</li>
+							<li>danh muc</li>
+							<li>danh muc</li>
+						</ul>
+					</li>
 					<li>danh muc</li>
 					<li>danh muc</li>
 				</ul>
 			</div>
-
-
-
 			<div class="col-sm-8 col-md-8">
 				<div class="row">
 					<div class="col-sm-5 col-md-5">
@@ -95,12 +113,12 @@
 					</div>
 					<div class="col-sm-7 col-md-7">
 						<h3>${sanPham.getTensanpham() }</h3>
-						<h4>${sanPham.getGiatien() }VNĐ</h4>
+						<h4 style="color: red">${sanPham.getGiatien() }VNĐ</h4>
 						<table class="table">
-							<thead>	
-							 	<td>Màu </td>
-								<td>Size </td>
-								<td>Số lượng </td>
+							<thead>
+								<td>Màu</td>
+								<td>Size</td>
+								<td>Số lượng</td>
 							</thead>
 							<tbody>
 								<c:forEach var="ctSanPham"
@@ -109,7 +127,7 @@
 										<td>${ctSanPham.getMauSanPham().getTenmau() }</td>
 										<td>${ctSanPham.getSizeSanPham().getSize() }</td>
 										<td>${ctSanPham.getSoluong() }</td>
-										<td><button class="btn-success">Giỏ hàng </button></td>
+										<td><button class="btn btn-success">Giỏ hàng</button></td>
 									</tr>
 								</c:forEach>
 							</tbody>
@@ -126,7 +144,7 @@
 
 	<div id="footer" class="container-fluid">
 		<div class="row">
-			<div class="col-sm-4 col-md-4 wow animate__heartBeat">
+			<div class="col-sm-4 col-md-4">
 				<p>
 					<span class="title-footer">Shop Info</span>
 				</p>
@@ -137,7 +155,7 @@
 					wholesalers.</span>
 			</div>
 
-			<div class="col-sm-4 col-md-4 wow animate__heartBeat">
+			<div class="col-sm-4 col-md-4 ">
 				<p>
 					<span class="title-footer">Contact</span>
 				</p>
@@ -146,7 +164,7 @@
 					R.C.S. Paris 819 963 919</span><br> <span>- Nguyen Linh Phuong</span><br>
 			</div>
 
-			<div class="col-sm-4 col-md-4 wow animate__heartBeat">
+			<div class="col-sm-4 col-md-4 ">
 				<p>
 					<span class="title-footer">Feedback</span>
 				</p>
