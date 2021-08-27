@@ -21,12 +21,13 @@ public class SanPhamImpl implements SanPhamDAO {
 	@Autowired
 	SessionFactory sessionFactory;
 
+	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
 	public List<SanPham> getListProductLimit(int start) {
 		Session session = sessionFactory.getCurrentSession();
 
-		List<SanPham> listSanPhams = (List<SanPham>) session.createQuery("from SANPHAM").setFirstResult(0)
+		List<SanPham> listSanPhams = session.createQuery("from SANPHAM").setFirstResult(0)
 				.setMaxResults(8).getResultList();
 
 		return listSanPhams;
@@ -39,8 +40,6 @@ public class SanPhamImpl implements SanPhamDAO {
 		String query = "FROM SANPHAM where masanpham = "+masanpham;
 
 		SanPham sanPham = (SanPham) session.createQuery(query).getSingleResult();
-		
-//		System.out.println(sanPham.getChiTietSanPhams());
 
 		return sanPham;
 	}

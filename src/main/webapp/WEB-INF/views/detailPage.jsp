@@ -6,7 +6,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="resources/css/styles.css" />
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <jsp:include page="header.jsp" />
@@ -74,35 +73,12 @@
 
 	<div class="container">
 		<div class="row" style="margin-top: 16px;">
-
 			<div class="col-sm-2 col-md-2">
-				<h3>Danh muc SP</h3>
+				<h3>Category</h3>
 				<ul class="menu-detail">
-					<li>danh muc
-						<ul>
-							<li>danh muc</li>
-							<li>danh muc</li>
-							<li>danh muc</li>
-							<li>danh muc</li>
-						</ul>
-					</li>
-					<li>danh muc
-						<ul>
-							<li>danh muc
-								<ul>
-									<li>danh muc</li>
-									<li>danh muc</li>
-									<li>danh muc</li>
-									<li>danh muc</li>
-								</ul>
-							</li>
-							<li>danh muc</li>
-							<li>danh muc</li>
-							<li>danh muc</li>
-						</ul>
-					</li>
-					<li>danh muc</li>
-					<li>danh muc</li>
+					<c:forEach var="dm" items="${danhmuc}">
+						<li><a href="#">${dm.getTendanhmuc() }</a></li>
+					</c:forEach>					
 				</ul>
 			</div>
 			<div class="col-sm-8 col-md-8">
@@ -116,9 +92,9 @@
 						<h4 style="color: red">${sanPham.getGiatien() }VNĐ</h4>
 						<table class="table">
 							<thead>
-								<td>Màu</td>
-								<td>Size</td>
-								<td>Số lượng</td>
+								<td><h5>Màu</h5></td>
+								<td><h5>Size</h5> </td>
+								<td><h5>Số lượng</h5></td>
 							</thead>
 							<tbody>
 								<c:forEach var="ctSanPham"

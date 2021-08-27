@@ -6,7 +6,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="resources/css/styles.css" />
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <jsp:include page="header.jsp" />
