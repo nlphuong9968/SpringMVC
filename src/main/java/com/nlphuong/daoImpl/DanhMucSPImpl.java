@@ -28,10 +28,6 @@ public class DanhMucSPImpl implements DanhMucSPDAO{
 
 		List<DanhMucSanPham> mucSanPhams = session.createQuery("from DANHMUCSANPHAM").getResultList();
 		
-		for (DanhMucSanPham danhMucSanPham : mucSanPhams) {
-			System.out.println(danhMucSanPham.getTendanhmuc());
-		}
-		
 		return mucSanPhams;
 	}
 

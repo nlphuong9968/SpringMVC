@@ -61,8 +61,15 @@
 							</c:otherwise>
 						</c:choose>
 
-						<li><a href="#"><img
-								src='<c:url value="/resources/img/shopping-cart.png" />' /></a></li>
+						<li id="cart"><a href="#"><img
+								src='<c:url value="/resources/img/shopping-cart.png" />' />
+								<c:if test="${quantityPro > 0 }">
+								<div class="circle-cart"><span>${quantityPro }</span></div>
+								</c:if>
+								<c:if test="${quantityPro <= 0  || quantityPro == null}">
+								<div><span>${quantityPro }</span></div>
+								</c:if>
+						</a></li>
 					</ul>
 				</div>
 				<!-- /.navbar-collapse -->

@@ -12,12 +12,15 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.nlphuong.entity.SanPham;
+import com.nlphuong.entity.ShoppingCart;
 import com.nlphuong.service.SanPhamService;
 
 @Controller
 @RequestMapping("/")
+@SessionAttributes("cart")
 public class homePageController {
 	
 	@Autowired
@@ -30,6 +33,11 @@ public class homePageController {
 		if(email != null) {
 			Character firstChar = email.charAt(0);
 			modelMap.addAttribute("firstChar", firstChar);
+		}
+		
+		if(httpSession.getAttribute("cart") != null) {
+			List<ShoppingCart> lisCarts = (List<ShoppingCart>) httpSession.getAttribute("cart");
+			modelMap.addAttribute("quantityPro", lisCarts.size());
 		}
 		
 		List<SanPham> sanPhams = sanPhamService.getListProductLimit(0);

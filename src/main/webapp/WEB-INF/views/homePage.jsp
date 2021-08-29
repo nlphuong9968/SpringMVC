@@ -62,7 +62,11 @@
 						</c:choose>
 
 						<li><a href="#"><img
-								src='<c:url value="/resources/img/shopping-cart.png" />' /></a></li>
+								src='<c:url value="/resources/img/shopping-cart.png" />' />
+								<c:if test="${quantityPro != null }">
+								<div class="circle-cart"><span>${quantityPro }</span></div>
+								</c:if>
+						</a></li>
 					</ul>
 				</div>
 				<!-- /.navbar-collapse -->

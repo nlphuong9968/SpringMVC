@@ -8,7 +8,7 @@ html, body {
 	font-size: 14px;
 }
 
-img{
+img {
 	max-width: 100%
 }
 
@@ -671,32 +671,31 @@ a.circle-avatar:hover {
 	margin-bottom: 15px !important;
 }
 
-.title-card{
+.title-card {
 	-webkit-line-clamp: 3;
-    position: relative;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 22px;
-    padding: 5px;
-    height: 48px;
+	position: relative;
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 22px;
+	padding: 5px;
+	height: 48px;
 }
 
 /* end css home page*/
 
 /* start css detail page */
-
-#header-detail{
+#header-detail {
 	background-color: black;
 }
 
-ul{
+ul {
 	list-style-type: none;
 }
 
-thead td > h5{
+thead td>h5 {
 	font-weight: bold;
 }
 
@@ -711,16 +710,29 @@ thead td > h5{
 .menu-detail li:hover > ul{
 	display: block;
 } */
-
-.menu-detail{
+.menu-detail {
 	padding: 0;
 	margin: 0;
 }
 
-.menu-detail li{
+.menu-detail li {
 	font-size: 16px;
-    font-weight: 400;
-    padding: 4px 0px;
+	font-weight: 400;
+	padding: 4px 0px;
+}
+
+.circle-cart {
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	margin-left: 15px;
+	border-radius: 40px;
+	background: red;
+	text-align: center;
+	line-height: 22px;
+	font-size: 11px;
+	font-weight: bolder;
+	margin-top: -33px;
 }
 
 /* end css detail page */

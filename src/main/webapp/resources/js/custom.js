@@ -50,11 +50,6 @@ $(document).ready(function() {
 		var masp = $("#tensp").attr("data-masp");
 		var giatien = $("#giatien").attr("data-value");
 
-
-
-		alert(tensp + masp + giatien + tenmau + mamau + tensize + masize + soluong);
-
-
 		$.ajax({
 			url: "/minishop/api/AddShoppingCart",
 			type: "GET",
@@ -69,16 +64,19 @@ $(document).ready(function() {
 				tensize: tensize
 			},
 			success: function(value) {
-				if (value == "true") {
-					$('#result').text("success!");
-					currentPath = window.location.href;
-					path = currentPath.replace("login/", "");
-					window.location = path;
-				} else {
-					$('#result').text("false!");
-				}
+
 
 			}
+		}).done(function() {
+			$.ajax({
+				url: "/minishop/api/GetQuantityCart",
+				type: "GET",
+				success: function(value) {
+					$("#cart").find("div").addClass("circle-cart");
+					$("#cart").find("div").html("<span>" + value + "</span>");
+
+				}
+			});
 		});
 	})
 })

@@ -66,6 +66,17 @@ public class ApiController {
 		
 	}
 	
+	@GetMapping("GetQuantityCart")
+	@ResponseBody
+	public String getQuantityCart(HttpSession httpSession) {
+		
+		if(httpSession.getAttribute("cart") != null) {
+			List<ShoppingCart> lisCarts = (List<ShoppingCart>) httpSession.getAttribute("cart");
+			return lisCarts.size()+"";
+		}
+		return "";
+	}
+	
 	private int checkDuplicateProductCart(HttpSession httpSession,int masp, int mamau, int masize) {
 		List<ShoppingCart> lisCarts = (List<ShoppingCart>) httpSession.getAttribute("cart");
 		for(int i =0; i<lisCarts.size(); i++) {
