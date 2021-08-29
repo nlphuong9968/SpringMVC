@@ -62,14 +62,16 @@
 						</c:choose>
 
 						<li id="cart"><a href="#"><img
-								src='<c:url value="/resources/img/shopping-cart.png" />' />
-								<c:if test="${quantityPro > 0 }">
-								<div class="circle-cart"><span>${quantityPro }</span></div>
-								</c:if>
-								<c:if test="${quantityPro <= 0  || quantityPro == null}">
-								<div><span>${quantityPro }</span></div>
-								</c:if>
-						</a></li>
+								src='<c:url value="/resources/img/shopping-cart.png" />' /> <c:if
+									test="${quantityPro > 0 }">
+									<div class="circle-cart">
+										<span>${quantityPro }</span>
+									</div>
+								</c:if> <c:if test="${quantityPro <= 0  || quantityPro == null}">
+									<div>
+										<span>${quantityPro }</span>
+									</div>
+								</c:if> </a></li>
 					</ul>
 				</div>
 				<!-- /.navbar-collapse -->
@@ -79,48 +81,80 @@
 	</div>
 
 	<div class="container">
-		<div class="row" style="margin-top: 16px;">
-			<div class="col-sm-2 col-md-2">
-				<h3>Category</h3>
-				<ul class="menu-detail">
-					<c:forEach var="dm" items="${danhmuc}">
-						<li><a href="#">${dm.getTendanhmuc() }</a></li>
-					</c:forEach>					
-				</ul>
+		<div class="row">
+		<div class="col-md-7 col-sm-12">
+				<h3>Shopping Cart List</h3>
+				<table class="table">
+					<thead>
+						<tr>
+							<td></td>
+							<td><h5>Tên SP</h5></td>
+							<td><h5>Màu</h5></td>
+							<td><h5>Size</h5></td>
+							<td><h5>Số lượng</h5></td>
+							<td><h5>Giá Tiền</h5></td>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="value" items="${lstCarts}">
+							<tr>
+								<td><img style="width: 40px" alt=""
+									src='<c:url value="/resources/img/product/${value.getImage()}" />'>
+								</td>
+								<td>${value.getTensp()}</td>
+								<td class="mau" data-mamau="${value.getMamau() }">${value.getTenmau() }</td>
+								<td class="size" data-masize="${value.getMasize() }">${value.getTensize() }</td>
+								<td class="soluong"><input style="width: 50px"
+									type="number" value="${value.getSoluong()}" /></td>
+								<td>${value.getGiatien() }</td>
+								<td><button class="btn btn-success btn-cart">Delete</button></td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+				<h4 >Tổng tiền: <span style="color: red">1,555,000 VNĐ</span></h4>
 			</div>
-			<div class="col-sm-8 col-md-8">
-				<div class="row">
-					<div class="col-sm-5 col-md-5">
-						<img id="img" data-img="${sanPham.getHinhsanpham() }" alt=""
-							src='<c:url value="/resources/img/product/${sanPham.getHinhsanpham() }" />' />
+			<div class="col-md-5 col-sm-12">
+				<h3>Customer Info</h3>
+				<form action="" method="post">
+					<div class="input-group">
+						<span class="input-group-addon">Tên người nhận/mua </span> <input
+							type="text" class="form-control">
 					</div>
-					<div class="col-sm-7 col-md-7">
-						<h3 id="tensp" data-masp="${sanPham.getMasanpham() }">${sanPham.getTensanpham() }</h3>
-						<h4 id="giatien" data-value="${sanPham.getGiatien() }" style="color: red">${sanPham.getGiatien() }VNĐ</h4>
-						<table class="table">
-							<thead>
-								<td><h5>Màu</h5></td>
-								<td><h5>Size</h5> </td>
-								<td><h5>Số lượng</h5></td>
-							</thead>
-							<tbody>
-								<c:forEach var="ctSanPham"
-									items="${sanPham.getChiTietSanPhams()}">
-									<tr>
-										<td class="mau" data-mamau="${ctSanPham.getMauSanPham().getMamau() }">${ctSanPham.getMauSanPham().getTenmau() }</td>
-										<td class="size" data-masize="${ctSanPham.getSizeSanPham().getMasize() }">${ctSanPham.getSizeSanPham().getSize() }</td>
-										<td class="soluong" >${ctSanPham.getSoluong() }</td>
-										<td><button class="btn btn-success btn-cart">Giỏ hàng</button></td>
-									</tr>
-								</c:forEach>
-							</tbody>
-						</table>
+					<br>
+					<div class="input-group">
+						<span class="input-group-addon"> <span
+							class="glyphicon glyphicon-phone-alt" aria-hidden="true">
+						</span>
+						</span> <input type="tel" class="form-control" aria-label="Phone Number"
+							placeholder="Số điện thoại liên lạc ">
 					</div>
-				</div>
-			</div>
-			<div class="col-sm-2 col-md-2">
-				<h3>Mô Tả</h3>
-				<span>${sanPham.getMota() }</span>
+					<br>
+					<div class="input-group">
+						<span class="input-group-addon"> <input type="radio"
+							name="rdHinhthuc"></span> <input type="text"
+							value="Giao hàng tận nơi" disabled class="form-control">
+
+					</div>
+					<br>
+					<div class="input-group">
+						<span class="input-group-addon"> <input type="radio"
+							name="rdHinhthuc"></span> <input type="text"
+							value="Nhận hàng tại cửa hàng " disabled class="form-control">
+
+					</div>
+					<br>
+					<div class="input-group">
+						<span class="input-group-addon">Địa chỉ nhận hàng</span> <input
+							type="text" class="form-control">
+					</div>
+					<br>
+					<div class="form-group">
+						<label for="comment">Ghi chú:</label>
+						<textarea class="form-control" rows="5" id="comment"></textarea>
+					</div>
+					<input type="submit" class="btn btn-primary" value="Đặt hàng ">
+				</form>
 			</div>
 		</div>
 	</div>

@@ -49,6 +49,7 @@ $(document).ready(function() {
 		var tensp = $("#tensp").text();
 		var masp = $("#tensp").attr("data-masp");
 		var giatien = $("#giatien").attr("data-value");
+		var img = $("#img").attr("data-img");
 
 		$.ajax({
 			url: "/minishop/api/AddShoppingCart",
@@ -61,7 +62,8 @@ $(document).ready(function() {
 				tensp: tensp,
 				giatien: giatien,
 				tenmau: tenmau,
-				tensize: tensize
+				tensize: tensize,
+				image: img
 			},
 			success: function(value) {
 				$("#cart").find("div").addClass("circle-cart");

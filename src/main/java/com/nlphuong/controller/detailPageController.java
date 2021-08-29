@@ -35,8 +35,8 @@ public class detailPageController {
 		SanPham sanPham = sanPhamService.getProductDetailByMaSP(masanpham);
 		List<DanhMucSanPham> mucSanPhams = danhMucSPService.getDanhMucSP();
 		if(httpSession.getAttribute("cart") != null) {
-			List<ShoppingCart> lisCarts = (List<ShoppingCart>) httpSession.getAttribute("cart");
-			map.addAttribute("quantityPro", lisCarts.size());
+			List<ShoppingCart> lstCarts = (List<ShoppingCart>) httpSession.getAttribute("cart");
+			map.addAttribute("quantityPro", lstCarts.size());
 		}
 		
 		map.addAttribute("sanPham", sanPham);

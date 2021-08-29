@@ -11,6 +11,8 @@ public class ShoppingCart {
 	private String tenmau;
 	private String tensize;
 	
+	private String image;
+	
 	public ShoppingCart() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -63,6 +65,12 @@ public class ShoppingCart {
 	}
 	public void setTensize(String tensize) {
 		this.tensize = tensize;
+	}
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
 	}
 	
 }
