@@ -88,8 +88,8 @@
 							src='<c:url value="/resources/img/product/${sanPham.getHinhsanpham() }" />' />
 					</div>
 					<div class="col-sm-7 col-md-7">
-						<h3>${sanPham.getTensanpham() }</h3>
-						<h4 style="color: red">${sanPham.getGiatien() }VNĐ</h4>
+						<h3 id="tensp" data-masp="${sanPham.getMasanpham() }">${sanPham.getTensanpham() }</h3>
+						<h4 id="giatien" data-value="${sanPham.getGiatien() }" style="color: red">${sanPham.getGiatien() }VNĐ</h4>
 						<table class="table">
 							<thead>
 								<td><h5>Màu</h5></td>
@@ -100,10 +100,10 @@
 								<c:forEach var="ctSanPham"
 									items="${sanPham.getChiTietSanPhams()}">
 									<tr>
-										<td>${ctSanPham.getMauSanPham().getTenmau() }</td>
-										<td>${ctSanPham.getSizeSanPham().getSize() }</td>
-										<td>${ctSanPham.getSoluong() }</td>
-										<td><button class="btn btn-success">Giỏ hàng</button></td>
+										<td class="mau" data-mamau="${ctSanPham.getMauSanPham().getMamau() }">${ctSanPham.getMauSanPham().getTenmau() }</td>
+										<td class="size" data-masize="${ctSanPham.getSizeSanPham().getMasize() }">${ctSanPham.getSizeSanPham().getSize() }</td>
+										<td class="soluong" >${ctSanPham.getSoluong() }</td>
+										<td><button class="btn btn-success btn-cart">Giỏ hàng</button></td>
 									</tr>
 								</c:forEach>
 							</tbody>
