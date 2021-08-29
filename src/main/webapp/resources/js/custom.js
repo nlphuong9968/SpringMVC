@@ -64,10 +64,11 @@ $(document).ready(function() {
 				tensize: tensize
 			},
 			success: function(value) {
-
-
+				$("#cart").find("div").addClass("circle-cart");
+				$("#cart").find("div").html("<span>" + value + "</span>");
 			}
-		}).done(function() {
+		});
+		/*}).done(function() {
 			$.ajax({
 				url: "/minishop/api/GetQuantityCart",
 				type: "GET",
@@ -77,6 +78,6 @@ $(document).ready(function() {
 
 				}
 			});
-		});
+		});*/
 	})
 })

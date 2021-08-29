@@ -38,44 +38,39 @@ public class ApiController {
 	
 	@GetMapping("AddShoppingCart")
 	@ResponseBody
-	public void addShoppingCart(@ModelAttribute ShoppingCart cart, HttpSession httpSession) {
+	public String addShoppingCart(@ModelAttribute ShoppingCart cart, HttpSession httpSession) {
 		if(httpSession.getAttribute("cart") == null) {
 			List<ShoppingCart> carts = new ArrayList<>();
 			cart.setSoluong(1);
 			carts.add(cart);
 			httpSession.setAttribute("cart", carts);
-			List<ShoppingCart> lisCarts = (List<ShoppingCart>) httpSession.getAttribute("cart");
-			System.out.println(lisCarts.size());
+			
+			return carts.size()+"";
 		}else {
+			List<ShoppingCart> lisCarts = (List<ShoppingCart>) httpSession.getAttribute("cart");
 			int position = checkDuplicateProductCart(httpSession, cart.getMasp(), cart.getMamau(), cart.getMasize());
 			if(position == -1) {
-				List<ShoppingCart> lisCarts = (List<ShoppingCart>) httpSession.getAttribute("cart");
 				cart.setSoluong(1);
 				lisCarts.add(cart);
 			}else {
-				List<ShoppingCart> lisCarts = (List<ShoppingCart>) httpSession.getAttribute("cart");
 				int soluongmoi = lisCarts.get(position).getSoluong()+1;
 				lisCarts.get(position).setSoluong(soluongmoi);
 			}
-		}
-		
-		List<ShoppingCart> lisCarts = (List<ShoppingCart>) httpSession.getAttribute("cart");
-		for (ShoppingCart shoppingCart : lisCarts) {
-			System.out.println(shoppingCart.getMasp()+"-"+shoppingCart.getTenmau()+"-"+shoppingCart.getTensize()+"-"+shoppingCart.getSoluong());
+			return lisCarts.size()+"";
 		}
 		
 	}
 	
-	@GetMapping("GetQuantityCart")
-	@ResponseBody
-	public String getQuantityCart(HttpSession httpSession) {
-		
-		if(httpSession.getAttribute("cart") != null) {
-			List<ShoppingCart> lisCarts = (List<ShoppingCart>) httpSession.getAttribute("cart");
-			return lisCarts.size()+"";
-		}
-		return "";
-	}
+//	@GetMapping("GetQuantityCart")
+//	@ResponseBody
+//	public String getQuantityCart(HttpSession httpSession) {
+//		
+//		if(httpSession.getAttribute("cart") != null) {
+//			List<ShoppingCart> lisCarts = (List<ShoppingCart>) httpSession.getAttribute("cart");
+//			return lisCarts.size()+"";
+//		}
+//		return "";
+//	}
 	
 	private int checkDuplicateProductCart(HttpSession httpSession,int masp, int mamau, int masize) {
 		List<ShoppingCart> lisCarts = (List<ShoppingCart>) httpSession.getAttribute("cart");
