@@ -20,47 +20,47 @@ import com.nlphuong.service.NhanVienService;
 
 @Controller
 @RequestMapping("api/")
-@SessionAttributes({"email", "cart"})
+@SessionAttributes({ "email", "cart" })
 public class ApiController {
 
 	@Autowired
 	NhanVienService nhanVienService;
-	
+
 	@GetMapping("CheckLogin")
 	@ResponseBody
 	public String checkLogin(@RequestParam String email, @RequestParam String password, ModelMap modelMap) {
 
 		boolean check = nhanVienService.checkLogin(email, password);
 		modelMap.addAttribute("email", email);
-		
-		return ""+check;
+
+		return "" + check;
 	}
-	
+
 	@GetMapping("AddShoppingCart")
 	@ResponseBody
 	public String addShoppingCart(@ModelAttribute ShoppingCart cart, HttpSession httpSession) {
-		if(httpSession.getAttribute("cart") == null) {
+		if (httpSession.getAttribute("cart") == null) {
 			List<ShoppingCart> carts = new ArrayList<>();
 			cart.setSoluongCart(1);
 			carts.add(cart);
 			httpSession.setAttribute("cart", carts);
-			
-			return carts.size()+"";
-		}else {
+
+			return carts.size() + "";
+		} else {
 			List<ShoppingCart> lisCarts = (List<ShoppingCart>) httpSession.getAttribute("cart");
 			int position = checkDuplicateProductCart(httpSession, cart.getMasp(), cart.getMamau(), cart.getMasize());
-			if(position == -1) {
+			if (position == -1) {
 				cart.setSoluongCart(1);
 				lisCarts.add(cart);
-			}else {
-				int soluongmoi = lisCarts.get(position).getSoluongCart()+1;
+			} else {
+				int soluongmoi = lisCarts.get(position).getSoluongCart() + 1;
 				lisCarts.get(position).setSoluongCart(soluongmoi);
 			}
-			return lisCarts.size()+"";
+			return lisCarts.size() + "";
 		}
-		
+
 	}
-	
+
 //	@GetMapping("GetQuantityCart")
 //	@ResponseBody
 //	public String getQuantityCart(HttpSession httpSession) {
@@ -72,14 +72,25 @@ public class ApiController {
 //		return "";
 //	}
 	
-	private int checkDuplicateProductCart(HttpSession httpSession,int masp, int mamau, int masize) {
+	@GetMapping("UpdateQuantityCart")
+	@ResponseBody
+	public void updateQuantityCart(HttpSession httpSession,@RequestParam int soluongcart,@RequestParam int masp,@RequestParam int mamau,@RequestParam int masize) {
+		if(httpSession.getAttribute("cart") != null) {
+			List<ShoppingCart> lisCarts = (List<ShoppingCart>) httpSession.getAttribute("cart");
+			
+			int position = checkDuplicateProductCart(httpSession, masp, mamau, masize);
+			lisCarts.get(position).setSoluongCart(soluongcart);
+		}
+	}
+
+	public int checkDuplicateProductCart(HttpSession httpSession, int masp, int mamau, int masize) {
 		List<ShoppingCart> lisCarts = (List<ShoppingCart>) httpSession.getAttribute("cart");
-		for(int i =0; i<lisCarts.size(); i++) {
-			if(lisCarts.get(i).getMasp() == masp && lisCarts.get(i).getMamau() == mamau && lisCarts.get(i).getMasize() == masize) {
+		for (int i = 0; i < lisCarts.size(); i++) {
+			if (lisCarts.get(i).getMasp() == masp && lisCarts.get(i).getMamau() == mamau
+					&& lisCarts.get(i).getMasize() == masize) {
 				return i;
 			}
 		}
 		return -1;
 	}
-	
 }

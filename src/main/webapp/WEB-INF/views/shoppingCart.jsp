@@ -102,7 +102,7 @@
 								<td><img style="width: 40px" alt=""
 									src='<c:url value="/resources/img/product/${value.getImage()}" />'>
 								</td>
-								<td>${value.getTensp()}</td>
+								<td class="tensp" data-masp="${value.getMasp() }">${value.getTensp()}</td>
 								<td class="mau" data-mamau="${value.getMamau() }">${value.getTenmau() }</td>
 								<td class="size" data-masize="${value.getMasize() }">${value.getTensize() }</td>
 								<td class="soluong"><input class="soluong-cart" min="1" max="${value.getSoluong() }" style="width: 50px"

@@ -89,9 +89,12 @@ $(document).ready(function() {
 		var tongtiensp = 0;
 		if (!isChange) {
 			$(".giatien").each(function() {
+				
+				var soluong = $(this).closest("tr").find(".soluong-cart").val();
+		
 				var giatien = $(this).text();
 
-				giatien = parseInt(giatien) / 1000;
+				giatien = (parseInt(giatien) / 1000)* parseInt(soluong);
 
 				var format = giatien.toFixed(3).replace(/(\d)(?=(\d{3})+\.)/g, "$1.").toString();
 				$(this).html(format);
@@ -121,7 +124,7 @@ $(document).ready(function() {
 	$(".soluong-cart").change(function() {
 		var soluong = $(this).val();
 		var giatien = $(this).closest("tr").find(".giatien").attr("data-giatien");
-
+		
 		giatien = giatien / 1000;
 
 		var tongtien = soluong * giatien;
@@ -130,6 +133,47 @@ $(document).ready(function() {
 		var format = tongtien.toFixed(3).replace(/(\d)(?=(\d{3})+\.)/g, "$1.").toString();
 
 		$(this).closest("tr").find(".giatien").html(format);
-		assignSumMoney(true);
+		assignSumMoney(true, soluong);
+		
+		
+		var mamau = $(this).closest("tr").find(".mau").attr("data-mamau");
+		var masize = $(this).closest("tr").find(".size").attr("data-masize");
+		var masp = $(this).closest("tr").find(".tensp").attr("data-masp");
+		
+		$.ajax({
+			url: "/minishop/api/UpdateQuantityCart",
+			type: "GET",
+			data: {
+				masp: masp,
+				mamau: mamau,
+				masize: masize,
+				soluongcart: soluong
+			},
+			success: function(value) {
+				
+			}
+		});
 	})
+	
+	/*$(".soluong-cart").blur(function(){
+		var soluong = $(this).val();
+		var mamau = $(this).closest("tr").find(".mau").attr("data-mamau");
+		var masize = $(this).closest("tr").find(".size").attr("data-masize");
+		var masp = $(this).closest("tr").find(".tensp").attr("data-masp");
+		
+		$.ajax({
+			url: "/minishop/api/UpdateQuantityCart",
+			type: "GET",
+			data: {
+				masp: masp,
+				mamau: mamau,
+				masize: masize,
+				soluongcart: soluong
+			},
+			success: function(value) {
+				
+			}
+		});
+	})*/
+	
 })
