@@ -109,7 +109,7 @@
 									type="number" value="${value.getSoluongCart()}" /></td>
 								<td class="giatien" data-giatien="${value.getGiatien() }">
 									${value.getGiatien()}</td>
-								<td><button class="delete-cart btn btn-success btn-cart">Delete</button></td>
+								<td><button class="delete-cart btn btn-success">Delete</button></td>
 							</tr>
 						</c:forEach>
 					</tbody>
