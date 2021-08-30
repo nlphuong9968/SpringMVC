@@ -1,8 +1,9 @@
-<%@page import="java.util.List"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -96,7 +97,9 @@
 					</div>
 					<div class="col-sm-7 col-md-7">
 						<h3 id="tensp" data-masp="${sanPham.getMasanpham() }">${sanPham.getTensanpham() }</h3>
-						<h4 id="giatien" data-value="${sanPham.getGiatien() }" style="color: red">${sanPham.getGiatien() }VNĐ</h4>
+						<h4 id="giatien" data-value="${sanPham.getGiatien() }" style="color: red">
+						<fmt:setLocale value = "vi_VN" scope="session"/>
+         				<fmt:formatNumber value = "${fn:trim(sanPham.getGiatien()) }" type = "currency"/></h4>
 						<table class="table">
 							<thead>
 								<td><h5>Màu</h5></td>

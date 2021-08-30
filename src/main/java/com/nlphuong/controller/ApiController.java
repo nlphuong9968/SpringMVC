@@ -41,7 +41,7 @@ public class ApiController {
 	public String addShoppingCart(@ModelAttribute ShoppingCart cart, HttpSession httpSession) {
 		if(httpSession.getAttribute("cart") == null) {
 			List<ShoppingCart> carts = new ArrayList<>();
-			cart.setSoluong(1);
+			cart.setSoluongCart(1);
 			carts.add(cart);
 			httpSession.setAttribute("cart", carts);
 			
@@ -50,11 +50,11 @@ public class ApiController {
 			List<ShoppingCart> lisCarts = (List<ShoppingCart>) httpSession.getAttribute("cart");
 			int position = checkDuplicateProductCart(httpSession, cart.getMasp(), cart.getMamau(), cart.getMasize());
 			if(position == -1) {
-				cart.setSoluong(1);
+				cart.setSoluongCart(1);
 				lisCarts.add(cart);
 			}else {
-				int soluongmoi = lisCarts.get(position).getSoluong()+1;
-				lisCarts.get(position).setSoluong(soluongmoi);
+				int soluongmoi = lisCarts.get(position).getSoluongCart()+1;
+				lisCarts.get(position).setSoluongCart(soluongmoi);
 			}
 			return lisCarts.size()+"";
 		}

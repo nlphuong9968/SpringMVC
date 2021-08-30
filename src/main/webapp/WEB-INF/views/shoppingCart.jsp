@@ -1,8 +1,9 @@
-<%@page import="java.util.List"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -104,15 +105,16 @@
 								<td>${value.getTensp()}</td>
 								<td class="mau" data-mamau="${value.getMamau() }">${value.getTenmau() }</td>
 								<td class="size" data-masize="${value.getMasize() }">${value.getTensize() }</td>
-								<td class="soluong"><input style="width: 50px"
-									type="number" value="${value.getSoluong()}" /></td>
-								<td>${value.getGiatien() }</td>
+								<td class="soluong"><input class="soluong-cart" min="1" max="${value.getSoluong() }" style="width: 50px"
+									type="number" value="${value.getSoluongCart()}" /></td>
+								<td class="giatien" data-giatien="${value.getGiatien() }">
+									${value.getGiatien()}</td>
 								<td><button class="btn btn-success btn-cart">Delete</button></td>
 							</tr>
 						</c:forEach>
 					</tbody>
 				</table>
-				<h4 >Tổng tiền: <span style="color: red">1,555,000 VNĐ</span></h4>
+				<h4 >Tổng tiền: <span id="tongtien" style="color: red"></span></h4>
 			</div>
 			<div class="col-md-5 col-sm-12">
 				<h3>Customer Info</h3>

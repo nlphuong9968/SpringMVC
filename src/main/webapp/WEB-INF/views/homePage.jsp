@@ -1,8 +1,9 @@
-<%@page import="java.util.List"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -62,11 +63,12 @@
 						</c:choose>
 
 						<li><a href="#"><img
-								src='<c:url value="/resources/img/shopping-cart.png" />' />
-								<c:if test="${quantityPro != null }">
-								<div class="circle-cart"><span>${quantityPro }</span></div>
-								</c:if>
-						</a></li>
+								src='<c:url value="/resources/img/shopping-cart.png" />' /> <c:if
+									test="${quantityPro != null }">
+									<div class="circle-cart">
+										<span>${quantityPro }</span>
+									</div>
+								</c:if> </a></li>
 					</ul>
 				</div>
 				<!-- /.navbar-collapse -->
@@ -118,102 +120,15 @@
 						<div class="product wow animate__bounceIn">
 							<img alt=""
 								src='<c:url value="/resources/img/product/${sp.getHinhsanpham() }" />' />
-							<span class="title-card">${sp.getTensanpham()}</span> <span
-								class="price"> ${sp.getGiatien()} VND</span>
+							<span class="title-card">${sp.getTensanpham()}</span> 
+							<span class="price"> 
+								<fmt:setLocale value="vi_VN" scope="session" /> 	
+								<fmt:formatNumber value="${fn:trim(sp.getGiatien())}"
+									type="currency" /></span>
 						</div>
 					</a>
 				</div>
 			</c:forEach>
-
-
-
-			<%-- <div class="col-md-3 col-sm-6" >
-				<div class="product wow animate__bounceIn">
-					<img alt="" src='<c:url value="/resources/img/dress01.png" />' /><br />
-					<span>Caro skirt</span><br /> <span class="price">150.000
-						VND</span>
-				</div>
-			</div>
-			
-			<div class="col-md-3 col-sm-6" >
-				<div class="product wow animate__bounceIn">
-					<img alt="" src='<c:url value="/resources/img/dress01.png" />' /><br />
-					<span>Caro skirt</span><br /> <span class="price">150.000
-						VND</span>
-				</div>
-			</div>
-			
-			<div class="col-md-3 col-sm-6" >
-				<div class="product wow animate__bounceIn">
-					<img alt="" src='<c:url value="/resources/img/dress01.png" />' /><br />
-					<span>Caro skirt</span><br /> <span class="price">150.000
-						VND</span>
-				</div>
-			</div>
-			
-			<div class="col-md-3 col-sm-6" >
-				<div class="product wow animate__bounceIn">
-					<img alt="" src='<c:url value="/resources/img/dress01.png" />' /><br />
-					<span>Caro skirt</span><br /> <span class="price">150.000
-						VND</span>
-				</div>
-			</div>
-			
-			<div class="col-md-3 col-sm-6" >
-				<div class="product wow animate__bounceIn">
-					<img alt="" src='<c:url value="/resources/img/dress01.png" />' /><br />
-					<span>Caro skirt</span><br /> <span class="price">150.000
-						VND</span>
-				</div>
-			</div>
-
-			<div class="col-md-3 col-sm-6" >
-				<div class="product wow animate__bounceIn">
-					<img alt="" src='<c:url value="/resources/img/dress01.png" />' /><br />
-					<span>Caro skirt</span><br /> <span class="price">150.000
-						VND</span>
-				</div>
-			</div>
-			
-			<div class="col-md-3 col-sm-6" >
-				<div class="product wow animate__bounceIn">
-					<img alt="" src='<c:url value="/resources/img/dress01.png" />' /><br />
-					<span>Caro skirt</span><br /> <span class="price">150.000
-						VND</span>
-				</div>
-			</div>
-			
-			<div class="col-md-3 col-sm-6" >
-				<div class="product wow animate__bounceIn">
-					<img alt="" src='<c:url value="/resources/img/dress01.png" />' /><br />
-					<span>Caro skirt</span><br /> <span class="price">150.000
-						VND</span>
-				</div>
-			</div>
-			
-			<div class="col-md-3 col-sm-6" >
-				<div class="product wow animate__bounceIn">
-					<img alt="" src='<c:url value="/resources/img/dress01.png" />' /><br />
-					<span>Caro skirt</span><br /> <span class="price">150.000
-						VND</span>
-				</div>
-			</div>
-			
-			<div class="col-md-3 col-sm-6" >
-				<div class="product wow animate__bounceIn">
-					<img alt="" src='<c:url value="/resources/img/dress01.png" />' /><br />
-					<span>Caro skirt</span><br /> <span class="price">150.000
-						VND</span>
-				</div>
-			</div>
-
-			<div class="col-md-3 col-sm-6" >
-				<div class="product wow animate__bounceIn">
-					<img alt="" src='<c:url value="/resources/img/dress01.png" />' /><br />
-					<span>Caro skirt</span><br /> <span class="price">150.000
-						VND</span>
-				</div>
-			</div> --%>
 
 			<!-- end product -->
 		</div>

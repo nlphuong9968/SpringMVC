@@ -82,4 +82,54 @@ $(document).ready(function() {
 			});
 		});*/
 	})
+
+	assignSumMoney();
+
+	function assignSumMoney(isChange) {
+		var tongtiensp = 0;
+		if (!isChange) {
+			$(".giatien").each(function() {
+				var giatien = $(this).text();
+
+				giatien = parseInt(giatien) / 1000;
+
+				var format = giatien.toFixed(3).replace(/(\d)(?=(\d{3})+\.)/g, "$1.").toString();
+				$(this).html(format);
+
+				tongtiensp = tongtiensp + parseFloat(giatien);
+
+				var formatTongTien = tongtiensp.toFixed(3).replace(/(\d)(?=(\d{3})+\.)/g, "$1.").toString();
+
+				$("#tongtien").html(formatTongTien);
+			});
+		}
+		if (isChange) {
+			$(".giatien").each(function() {
+				var giatien = $(this).text();
+
+				giatien = giatien.split('.').join("");
+
+				tongtiensp = tongtiensp + parseInt(giatien)/1000;
+
+				var formatTongTien = tongtiensp.toFixed(3).replace(/(\d)(?=(\d{3})+\.)/g, "$1.").toString();
+
+				$("#tongtien").html(formatTongTien);
+			});
+		}
+	}
+
+	$(".soluong-cart").change(function() {
+		var soluong = $(this).val();
+		var giatien = $(this).closest("tr").find(".giatien").attr("data-giatien");
+
+		giatien = giatien / 1000;
+
+		var tongtien = soluong * giatien;
+
+		/* Format Currency */
+		var format = tongtien.toFixed(3).replace(/(\d)(?=(\d{3})+\.)/g, "$1.").toString();
+
+		$(this).closest("tr").find(".giatien").html(format);
+		assignSumMoney(true);
+	})
 })

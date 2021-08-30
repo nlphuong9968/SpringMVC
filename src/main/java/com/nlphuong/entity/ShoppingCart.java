@@ -6,6 +6,7 @@ public class ShoppingCart {
 	private int mamau;
 	private int masize;
 	private int soluong;
+	private int soluongCart;
 	private String tensp;
 	private String giatien;
 	private String tenmau;
@@ -71,6 +72,14 @@ public class ShoppingCart {
 	}
 	public void setImage(String image) {
 		this.image = image;
+	}
+
+	public int getSoluongCart() {
+		return soluongCart;
+	}
+
+	public void setSoluongCart(int soluongCart) {
+		this.soluongCart = soluongCart;
 	}
 	
 }
