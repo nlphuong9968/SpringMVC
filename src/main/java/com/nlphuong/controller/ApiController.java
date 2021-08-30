@@ -83,6 +83,17 @@ public class ApiController {
 		}
 	}
 
+	@GetMapping("DeleteCart")
+	@ResponseBody
+	public void deleteCart(HttpSession httpSession,@RequestParam int masp,@RequestParam int mamau,@RequestParam int masize) {
+		if(httpSession.getAttribute("cart") != null) {
+			List<ShoppingCart> lisCarts = (List<ShoppingCart>) httpSession.getAttribute("cart");
+			
+			int position = checkDuplicateProductCart(httpSession, masp, mamau, masize);
+			lisCarts.remove(position);
+		}
+	}
+	
 	public int checkDuplicateProductCart(HttpSession httpSession, int masp, int mamau, int masize) {
 		List<ShoppingCart> lisCarts = (List<ShoppingCart>) httpSession.getAttribute("cart");
 		for (int i = 0; i < lisCarts.size(); i++) {

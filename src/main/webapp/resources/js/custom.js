@@ -58,7 +58,7 @@ $(document).ready(function() {
 				masp: masp,
 				mamau: mamau,
 				masize: masize,
-				soluong: soluong,
+				soluong: parseInt(soluong),
 				tensp: tensp,
 				giatien: giatien,
 				tenmau: tenmau,
@@ -175,5 +175,26 @@ $(document).ready(function() {
 			}
 		});
 	})*/
+	
+	$(".delete-cart").click(function(){
+		var self = $(this);
+		var mamau = $(this).closest("tr").find(".mau").attr("data-mamau");
+		var masize = $(this).closest("tr").find(".size").attr("data-masize");
+		var masp = $(this).closest("tr").find(".tensp").attr("data-masp");
+		
+		$.ajax({
+			url: "/minishop/api/DeleteCart",
+			type: "GET",
+			data: {
+				masp: masp,
+				mamau: mamau,
+				masize: masize
+			},
+			success: function(value) {
+				self.closest("tr").remove();
+				assignSumMoney(true);
+			}
+		});
+	})
 	
 })
