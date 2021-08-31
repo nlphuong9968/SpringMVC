@@ -4,14 +4,13 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.nlphuong.entity.DanhMucSanPham;
@@ -21,19 +20,20 @@ import com.nlphuong.service.DanhMucSPService;
 import com.nlphuong.service.SanPhamService;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("product/")
 @SessionAttributes("cart")
-public class homePageController {
-	
-	@Autowired
-	SanPhamService sanPhamService;
+public class productPageController {
 	
 	@Autowired
 	DanhMucSPService danhMucSPService;
 	
-	@GetMapping
+	@Autowired
+	SanPhamService sanPhamService;
+	
+	@GetMapping("{id}/{tendanhmuc}")
 	@Transactional
-	public String Default(ModelMap modelMap, HttpSession httpSession) {
+	public String Default(@PathVariable int id,@PathVariable String tendanhmuc,ModelMap modelMap, HttpSession httpSession) {
+		
 		List<DanhMucSanPham> mucSanPhams = danhMucSPService.getDanhMucSP();
 		String email = (String) httpSession.getAttribute("email");
 		if(email != null) {
@@ -46,12 +46,12 @@ public class homePageController {
 			modelMap.addAttribute("quantityPro", lisCarts.size());
 		}
 		
-		List<SanPham> sanPhams = sanPhamService.getListProductLimit(0);
+		List<SanPham> sanPhams = sanPhamService.getListProductByCategoryId(id);
 		
 		modelMap.addAttribute("lstSanPham", sanPhams);
 		modelMap.addAttribute("danhmuc", mucSanPhams);
+		modelMap.addAttribute("tendanhmuc", tendanhmuc);
 		
-		return "homePage";
+		return "productPage";
 	}
-		
 }

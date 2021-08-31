@@ -3,7 +3,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,15 +36,13 @@
 						<li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown" role="button" aria-haspopup="true"
-							aria-expanded="false">Dropdown <span class="caret"></span></a>
+							aria-expanded="false">Category <span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="#">Action</a></li>
-								<li><a href="#">Another action</a></li>
-								<li><a href="#">Something else here</a></li>
-								<li role="separator" class="divider"></li>
-								<li><a href="#">Separated link</a></li>
-								<li role="separator" class="divider"></li>
-								<li><a href="#">One more separated link</a></li>
+								<c:forEach var="dm" items="${danhmuc}">
+									<li><a href='<c:url value="/product/${dm.getMadanhmuc()}/${dm.getTendanhmuc()}" />'>${dm.getTendanhmuc() }</a></li>
+									<li role="separator" class="divider"></li>
+								</c:forEach>
+								
 							</ul></li>
 						<li><a href="#">Services</a></li>
 						<li><a href="#">Contacts</a></li>
@@ -120,11 +118,10 @@
 						<div class="product wow animate__bounceIn">
 							<img alt=""
 								src='<c:url value="/resources/img/product/${sp.getHinhsanpham() }" />' />
-							<span class="title-card">${sp.getTensanpham()}</span> 
-							<span class="price"> 
-								<fmt:setLocale value="vi_VN" scope="session" /> 	
-								<fmt:formatNumber value="${fn:trim(sp.getGiatien())}"
-									type="currency" /></span>
+							<span class="title-card">${sp.getTensanpham()}</span> <span
+								class="price"> <fmt:setLocale value="vi_VN"
+									scope="session" /> <fmt:formatNumber
+									value="${fn:trim(sp.getGiatien())}" type="currency" /></span>
 						</div>
 					</a>
 				</div>

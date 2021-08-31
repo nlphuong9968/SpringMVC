@@ -2,8 +2,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,7 +39,7 @@
 							aria-expanded="false">Category <span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<c:forEach var="dm" items="${danhmuc}">
-									<li><a href="product/${dm.getMadanhmuc()}/${dm.getTendanhmuc() }">${dm.getTendanhmuc() }</a></li>
+									<li><a href='<c:url value="/product/${dm.getMadanhmuc()}/${dm.getTendanhmuc()}" />'>${dm.getTendanhmuc() }</a></li>
 									<li role="separator" class="divider"></li>
 								</c:forEach>
 							</ul></li>
@@ -60,14 +60,16 @@
 						</c:choose>
 
 						<li id="cart"><a href="#"><img
-								src='<c:url value="/resources/img/shopping-cart.png" />' />
-								<c:if test="${quantityPro > 0 }">
-								<div class="circle-cart"><span>${quantityPro }</span></div>
-								</c:if>
-								<c:if test="${quantityPro <= 0  || quantityPro == null}">
-								<div><span>${quantityPro }</span></div>
-								</c:if>
-						</a></li>
+								src='<c:url value="/resources/img/shopping-cart.png" />' /> <c:if
+									test="${quantityPro > 0 }">
+									<div class="circle-cart">
+										<span>${quantityPro }</span>
+									</div>
+								</c:if> <c:if test="${quantityPro <= 0  || quantityPro == null}">
+									<div>
+										<span>${quantityPro }</span>
+									</div>
+								</c:if> </a></li>
 					</ul>
 				</div>
 				<!-- /.navbar-collapse -->
@@ -83,45 +85,34 @@
 				<ul class="menu-detail">
 					<c:forEach var="dm" items="${danhmuc}">
 						<li><a href="#">${dm.getTendanhmuc() }</a></li>
-					</c:forEach>					
+					</c:forEach>
 				</ul>
 			</div>
 			<div class="col-sm-8 col-md-8">
-				<div class="row">
-					<div class="col-sm-5 col-md-5">
-						<img id="img" data-img="${sanPham.getHinhsanpham() }" alt=""
-							src='<c:url value="/resources/img/product/${sanPham.getHinhsanpham() }" />' />
-					</div>
-					<div class="col-sm-7 col-md-7">
-						<h3 id="tensp" data-masp="${sanPham.getMasanpham() }">${sanPham.getTensanpham() }</h3>
-						<h4 id="giatien" data-value="${sanPham.getGiatien() }" style="color: red">
-						<fmt:setLocale value = "vi_VN" scope="session"/>
-         				<fmt:formatNumber value = "${fn:trim(sanPham.getGiatien()) }" type = "currency"/></h4>
-						<table class="table">
-							<thead>
-								<td><h5>Màu</h5></td>
-								<td><h5>Size</h5> </td>
-								<td><h5>Số lượng</h5></td>
-							</thead>
-							<tbody>
-								<c:forEach var="ctSanPham"
-									items="${sanPham.getChiTietSanPhams()}">
-									<tr>
-										<td class="mau" data-mamau="${ctSanPham.getMauSanPham().getMamau() }">${ctSanPham.getMauSanPham().getTenmau() }</td>
-										<td class="size" data-masize="${ctSanPham.getSizeSanPham().getMasize() }">${ctSanPham.getSizeSanPham().getSize() }</td>
-										<td class="soluong" >${ctSanPham.getSoluong() }</td>
-										<td><button data-machitietsp="${ctSanPham.getMachitietsanpham()}" class="btn btn-success btn-cart">Giỏ hàng</button></td>
-									</tr>
-								</c:forEach>
-							</tbody>
-						</table>
+				<div id="title-product" class="container">
+					<span>${tendanhmuc }</span>
+					<div class="row">
+
+						<c:forEach var="sp" items="${lstSanPham }">
+							<div class="col-md-3 col-sm-6">
+								<a href="detail/${sp.getMasanpham() }">
+									<div class="product wow animate__bounceIn">
+										<img alt=""
+											src='<c:url value="/resources/img/product/${sp.getHinhsanpham() }" />' />
+										<span class="title-card">${sp.getTensanpham()}</span> <span
+											class="price"> <fmt:setLocale value="vi_VN"
+												scope="session" /> <fmt:formatNumber
+												value="${fn:trim(sp.getGiatien())}" type="currency" /></span>
+									</div>
+								</a>
+							</div>
+						</c:forEach>
+
+						<!-- end product -->
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-2 col-md-2">
-				<h3>Mô Tả</h3>
-				<span>${sanPham.getMota() }</span>
-			</div>
+			<div class="col-sm-2 col-md-2"></div>
 		</div>
 	</div>
 

@@ -28,4 +28,10 @@ public class SanPhamService implements SanPhamDAO{
 		return sanPhamImpl.getProductDetailByMaSP(masanpham);
 	}
 
+	@Override
+	public List<SanPham> getListProductByCategoryId(int madanhmuc) {
+		
+		return sanPhamImpl.getListProductByCategoryId(madanhmuc);
+	}
+
 }

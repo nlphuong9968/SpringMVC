@@ -44,4 +44,15 @@ public class SanPhamImpl implements SanPhamDAO {
 		return sanPham;
 	}
 
+	@Override
+	@Transactional
+	public List<SanPham> getListProductByCategoryId(int madanhmuc) {
+		Session session = sessionFactory.getCurrentSession();
+		String query = "FROM SANPHAM where madanhmuc = "+madanhmuc;
+
+		List<SanPham> listSanPhams = (List<SanPham>) session.createQuery(query).getResultList();
+		
+		return listSanPhams;
+	}
+
 }

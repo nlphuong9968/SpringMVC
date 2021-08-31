@@ -9,4 +9,6 @@ public interface SanPhamDAO {
 	List<SanPham> getListProductLimit(int start);
 	
 	SanPham getProductDetailByMaSP(int masanpham);
+	
+	List<SanPham> getListProductByCategoryId(int madanhmuc);
 }
