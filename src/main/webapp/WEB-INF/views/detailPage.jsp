@@ -113,7 +113,7 @@
 										<td class="mau" data-mamau="${ctSanPham.getMauSanPham().getMamau() }">${ctSanPham.getMauSanPham().getTenmau() }</td>
 										<td class="size" data-masize="${ctSanPham.getSizeSanPham().getMasize() }">${ctSanPham.getSizeSanPham().getSize() }</td>
 										<td class="soluong" >${ctSanPham.getSoluong() }</td>
-										<td><button class="btn btn-success btn-cart">Giỏ hàng</button></td>
+										<td><button data-machitietsp="${ctSanPham.getMachitietsanpham()}" class="btn btn-success btn-cart">Giỏ hàng</button></td>
 									</tr>
 								</c:forEach>
 							</tbody>

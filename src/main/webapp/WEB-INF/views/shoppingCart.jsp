@@ -98,7 +98,7 @@
 					</thead>
 					<tbody>
 						<c:forEach var="value" items="${lstCarts}">
-							<tr>
+							<tr data-machitietsp="${value.getMachitietsp()}">
 								<td><img style="width: 40px" alt=""
 									src='<c:url value="/resources/img/product/${value.getImage()}" />'>
 								</td>
@@ -120,40 +120,43 @@
 				<h3>Customer Info</h3>
 				<form action="" method="post">
 					<div class="input-group">
-						<span class="input-group-addon">Tên người nhận/mua </span> <input
-							type="text" class="form-control">
+						<span class="input-group-addon">Tên người nhận/mua </span> 
+						<input type="text" name="tenkhachhang" class="form-control">
 					</div>
 					<br>
 					<div class="input-group">
 						<span class="input-group-addon"> <span
 							class="glyphicon glyphicon-phone-alt" aria-hidden="true">
 						</span>
-						</span> <input type="tel" class="form-control" aria-label="Phone Number"
+						</span> 
+						<input type="tel" name="sodt" class="form-control" aria-label="Phone Number"
 							placeholder="Số điện thoại liên lạc ">
 					</div>
 					<br>
 					<div class="input-group">
-						<span class="input-group-addon"> <input type="radio"
-							name="rdHinhthuc"></span> <input type="text"
+						<span class="input-group-addon"> <input name="hinhthucgiaohang" type="radio" checked
+							name="rdHinhthuc" value="Giao hàng tận nơi"></span> 
+							<input type="text"
 							value="Giao hàng tận nơi" disabled class="form-control">
 
 					</div>
 					<br>
 					<div class="input-group">
-						<span class="input-group-addon"> <input type="radio"
-							name="rdHinhthuc"></span> <input type="text"
+						<span class="input-group-addon"> <input type="radio" name="hinhthucgiaohang"
+							name="rdHinhthuc" value="Nhận hàng tại cửa hàng "></span> 
+							<input type="text"
 							value="Nhận hàng tại cửa hàng " disabled class="form-control">
 
 					</div>
 					<br>
 					<div class="input-group">
-						<span class="input-group-addon">Địa chỉ nhận hàng</span> <input
-							type="text" class="form-control">
+						<span class="input-group-addon">Địa chỉ nhận hàng</span> 
+						<input name="diachigiaohang" type="text" class="form-control">
 					</div>
 					<br>
 					<div class="form-group">
 						<label for="comment">Ghi chú:</label>
-						<textarea class="form-control" rows="5" id="comment"></textarea>
+						<textarea name="ghichu" class="form-control" rows="5" id="ghichu"></textarea>
 					</div>
 					<input type="submit" class="btn btn-primary" value="Đặt hàng ">
 				</form>

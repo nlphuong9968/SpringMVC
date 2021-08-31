@@ -12,7 +12,6 @@ public class ChiTietHoaDonId implements Serializable{
 	
 	public ChiTietHoaDonId() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	public int getMahoadon() {

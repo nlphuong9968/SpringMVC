@@ -22,6 +22,8 @@ public class HoaDon {
 	private String diachigiaohang;
 	private Boolean tinhtrang;
 	private String ngaylap;
+	private String hinhthucgiaohang;
+	private String ghichu;
 	
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "mahoadon")
@@ -72,6 +74,18 @@ public class HoaDon {
 	}
 	public void setChiTietHoaDons(Set<ChiTietHoaDon> chiTietHoaDons) {
 		this.chiTietHoaDons = chiTietHoaDons;
+	}
+	public String getHinhthucgiaohang() {
+		return hinhthucgiaohang;
+	}
+	public void setHinhthucgiaohang(String hinhthucgiaohang) {
+		this.hinhthucgiaohang = hinhthucgiaohang;
+	}
+	public String getGhichu() {
+		return ghichu;
+	}
+	public void setGhichu(String ghichu) {
+		this.ghichu = ghichu;
 	}
 	
 }

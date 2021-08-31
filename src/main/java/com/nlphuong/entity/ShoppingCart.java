@@ -7,6 +7,7 @@ public class ShoppingCart {
 	private int masize;
 	private int soluong;
 	private int soluongCart;
+	private int machitietsp;
 	private String tensp;
 	private String giatien;
 	private String tenmau;
@@ -80,6 +81,14 @@ public class ShoppingCart {
 
 	public void setSoluongCart(int soluongCart) {
 		this.soluongCart = soluongCart;
+	}
+
+	public int getMachitietsp() {
+		return machitietsp;
+	}
+
+	public void setMachitietsp(int machitietsp) {
+		this.machitietsp = machitietsp;
 	}
 	
 }
