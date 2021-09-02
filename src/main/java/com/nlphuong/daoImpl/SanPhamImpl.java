@@ -1,5 +1,6 @@
 package com.nlphuong.daoImpl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -26,10 +27,13 @@ public class SanPhamImpl implements SanPhamDAO {
 	@Transactional
 	public List<SanPham> getListProductLimit(int start) {
 		Session session = sessionFactory.getCurrentSession();
-
-		List<SanPham> listSanPhams = session.createQuery("from SANPHAM").setFirstResult(0)
-				.setMaxResults(8).getResultList();
-
+		List<SanPham> listSanPhams = new ArrayList<>();
+		if(start < 0) {
+			listSanPhams = session.createQuery("from SANPHAM").getResultList();
+		}else {
+			listSanPhams = session.createQuery("from SANPHAM").setFirstResult(start)
+				.setMaxResults(3).getResultList();
+		}
 		return listSanPhams;
 	}
 

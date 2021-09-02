@@ -199,4 +199,24 @@ $(document).ready(function() {
 		});
 	})
 	
+	$("body").on("click",".paging", function(){
+		$(".paging").removeClass("active");
+		$(this).addClass("active");
+		var numPage = $(this).text();
+		var indexStart = (numPage - 1)*3;
+		
+		$.ajax({
+			url: "/minishop/api/getNumPage",
+			type: "GET",
+			data: {
+				indexStart : indexStart
+			},
+			success: function(value) {
+				var tbodysp = $("#table-product").find("tbody");
+				tbodysp.empty();
+				tbodysp.append(value);
+			}
+		});
+	});
+	
 })

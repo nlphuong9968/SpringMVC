@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.nlphuong.entity.SanPham;
 import com.nlphuong.entity.ShoppingCart;
 import com.nlphuong.service.NhanVienService;
+import com.nlphuong.service.SanPhamService;
 
 @Controller
 @RequestMapping("api/")
@@ -25,6 +27,9 @@ public class ApiController {
 
 	@Autowired
 	NhanVienService nhanVienService;
+
+	@Autowired
+	SanPhamService sanPhamService;
 
 	@GetMapping("CheckLogin")
 	@ResponseBody
@@ -71,13 +76,14 @@ public class ApiController {
 //		}
 //		return "";
 //	}
-	
+
 	@GetMapping("UpdateQuantityCart")
 	@ResponseBody
-	public void updateQuantityCart(HttpSession httpSession,@RequestParam int soluongcart,@RequestParam int masp,@RequestParam int mamau,@RequestParam int masize) {
-		if(httpSession.getAttribute("cart") != null) {
+	public void updateQuantityCart(HttpSession httpSession, @RequestParam int soluongcart, @RequestParam int masp,
+			@RequestParam int mamau, @RequestParam int masize) {
+		if (httpSession.getAttribute("cart") != null) {
 			List<ShoppingCart> lisCarts = (List<ShoppingCart>) httpSession.getAttribute("cart");
-			
+
 			int position = checkDuplicateProductCart(httpSession, masp, mamau, masize);
 			lisCarts.get(position).setSoluongCart(soluongcart);
 		}
@@ -85,15 +91,16 @@ public class ApiController {
 
 	@GetMapping("DeleteCart")
 	@ResponseBody
-	public void deleteCart(HttpSession httpSession,@RequestParam int masp,@RequestParam int mamau,@RequestParam int masize) {
-		if(httpSession.getAttribute("cart") != null) {
+	public void deleteCart(HttpSession httpSession, @RequestParam int masp, @RequestParam int mamau,
+			@RequestParam int masize) {
+		if (httpSession.getAttribute("cart") != null) {
 			List<ShoppingCart> lisCarts = (List<ShoppingCart>) httpSession.getAttribute("cart");
-			
+
 			int position = checkDuplicateProductCart(httpSession, masp, mamau, masize);
 			lisCarts.remove(position);
 		}
 	}
-	
+
 	public int checkDuplicateProductCart(HttpSession httpSession, int masp, int mamau, int masize) {
 		List<ShoppingCart> lisCarts = (List<ShoppingCart>) httpSession.getAttribute("cart");
 		for (int i = 0; i < lisCarts.size(); i++) {
@@ -103,5 +110,28 @@ public class ApiController {
 			}
 		}
 		return -1;
+	}
+
+	@GetMapping(path = "getNumPage", produces = "text/plain;charset=utf-8")
+	@ResponseBody
+	public String checkLogin(@RequestParam int indexStart) {
+
+		String html = "";
+		List<SanPham> sanPhams = sanPhamService.getListProductLimit(indexStart);
+		for (SanPham sp : sanPhams) {
+			
+			html += "<tr>";
+			html += "<td>";
+			html += "<div class='checkbox'>";
+			html += "<label><input class='checkBoxSP' type='checkbox' value=''>";
+			html += "</label>";
+			html += "</div>";
+			html += "</td>";
+			html += "<td class='tensp' >"+sp.getTensanpham()+"</td>";
+			html += "<td class='giatien' >"+sp.getGiatien()+"</td>";
+			html += "</tr>";
+		}
+		System.out.println(html);
+		return html;
 	}
 }
