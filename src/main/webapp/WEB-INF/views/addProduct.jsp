@@ -38,6 +38,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link rel="stylesheet"
 	href='<c:url value="/resources/bootstrap-3.4.1/css/bootstrap.min.css" />' />
 <!-- Custom CSS -->
+
 <link rel="stylesheet" href='<c:url value="/resources/css/style.css" />' />
 <link rel="stylesheet"
 	href='<c:url value="/resources/css/morris.css" />' />
@@ -87,21 +88,42 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						placeholder="Nhap mo ta"></textarea>
 					<br> <label for="img">Hinh anh</label> <br> 
 					<input id="img" name="img" class="form-control" type="file" /><br> 
+					
+					<div id="chitietsanpham" class="chitietsanpham">
+						<span>Chi tiet san pham</span><br/>
+					
+						<select name="mausp" class="form-control" id="danhmucsp">
+							<c:forEach var="mau" items="${mauSP}">
+								<option value="${mau.getMamau()}">${mau.getTenmau() }</option>
+							</c:forEach>						
+						</select> <br> 
+						<select name="sizesp" class="form-control" id="danhmucsp">
+							<c:forEach var="size" items="${sizeSP}">
+								<option value="${size.getMasize()}">${size.getSize() }</option>
+							</c:forEach>						
+						</select> <br> 
 						
-					<span>Chi tiet san pham</span><br/>
+						<input id="img" name="img" class="form-control" type="number" placeholder="So luong"/><br> 
+						<button class="btn btn-primary btn-chitiet">Add Detail</button>
+					</div>
+					<div id="containerchitietsanpham">
+						<span>Chi tiet san pham</span><br/>
 					
-					<select name="danhmucsp" class="form-control" id="danhmucsp">
-						<c:forEach var="dm" items="${danhmuc}">
-							<option value="${dm.getMadanhmuc()}">${dm.getTendanhmuc() }</option>
-						</c:forEach>						
-					</select> <br> 
-					<select name="danhmucsp" class="form-control" id="danhmucsp">
-						<c:forEach var="dm" items="${danhmuc}">
-							<option value="${dm.getMadanhmuc()}">${dm.getTendanhmuc() }</option>
-						</c:forEach>						
-					</select> <br> 
-					
-					<input id="img" name="img" class="form-control" type="number" placeholder="So luong"/><br> 
+						<select name="mausp" class="form-control" id="danhmucsp">
+							<c:forEach var="mau" items="${mauSP}">
+								<option value="${mau.getMamau()}">${mau.getTenmau() }</option>
+							</c:forEach>						
+						</select> <br> 
+						<select name="sizesp" class="form-control" id="danhmucsp">
+							<c:forEach var="size" items="${sizeSP}">
+								<option value="${size.getMasize()}">${size.getSize() }</option>
+							</c:forEach>						
+						</select> <br> 
+						
+						<input id="img" name="img" class="form-control" type="number" placeholder="So luong"/><br> 
+						<button class="btn btn-primary btn-chitiet">Add Detail</button>
+					</div>
+					<br>
 					<button class="btn btn-primary">Add Product</button>
 				</div>
 				<div class="col-md-6 col-sm-12">

@@ -6426,3 +6426,17 @@ ul.dropdown-menu {
 }
 }
 /***responsive***/
+
+/* start css dashboard page */
+
+#chitietsanpham{
+	display: none;
+}
+
+.btn-chitiet{
+	display: block;
+    margin-right: 0;
+    margin-left: auto;
+}
+
+/* end css dashboard page */

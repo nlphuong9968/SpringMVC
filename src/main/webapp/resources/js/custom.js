@@ -268,5 +268,11 @@ $(document).ready(function() {
 				}
 			});
 	});
+	
+	$("body").on("click",".btn-chitiet", function(){
+		$(this).remove();
+		var chitietsanpham = $("#chitietsanpham").clone().removeAttr("id");
+		$("#containerchitietsanpham").append(chitietsanpham);
+	})
 
 })
