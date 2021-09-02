@@ -123,7 +123,7 @@ public class ApiController {
 			html += "<tr>";
 			html += "<td>";
 			html += "<div class='checkbox'>";
-			html += "<label><input class='checkBoxSP' type='checkbox' value=''>";
+			html += "<label><input class='checkBoxSP' type='checkbox' value='"+sp.getMasanpham()+"'>";
 			html += "</label>";
 			html += "</div>";
 			html += "</td>";
@@ -133,5 +133,13 @@ public class ApiController {
 		}
 		System.out.println(html);
 		return html;
+	}
+	
+	@GetMapping("DeleteProduct")
+	@ResponseBody
+	public String deleteProductByID(@RequestParam int masp) {
+		System.out.println(masp);
+		sanPhamService.deleteProductById(masp);
+		return "";
 	}
 }

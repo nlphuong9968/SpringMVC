@@ -34,4 +34,10 @@ public class SanPhamService implements SanPhamDAO{
 		return sanPhamImpl.getListProductByCategoryId(madanhmuc);
 	}
 
+	@Override
+	public boolean deleteProductById(int masp) {
+		
+		return sanPhamImpl.deleteProductById(masp);
+	}
+
 }

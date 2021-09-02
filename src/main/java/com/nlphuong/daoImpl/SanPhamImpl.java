@@ -2,6 +2,7 @@ package com.nlphuong.daoImpl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -12,6 +13,8 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.nlphuong.dao.SanPhamDAO;
+import com.nlphuong.entity.ChiTietHoaDon;
+import com.nlphuong.entity.ChiTietHoaDonId;
 import com.nlphuong.entity.ChiTietSanPham;
 import com.nlphuong.entity.SanPham;
 
@@ -57,6 +60,27 @@ public class SanPhamImpl implements SanPhamDAO {
 		List<SanPham> listSanPhams = (List<SanPham>) session.createQuery(query).getResultList();
 		
 		return listSanPhams;
+	}
+
+	@Override
+	@Transactional
+	public boolean deleteProductById(int masp) {
+		Session session = sessionFactory.getCurrentSession();
+//		SanPham sanPham = new SanPham();
+//		sanPham.setMasanpham(masp);
+		
+		SanPham sanPham = session.get(SanPham.class, masp);
+		
+		Set<ChiTietSanPham> chiTietSanPhams = sanPham.getChiTietSanPhams();
+		
+		for (ChiTietSanPham chiTietSanPham : chiTietSanPhams) {
+			
+			session.createQuery("delete CHITIETHOADON where machitietsanpham ="+chiTietSanPham.getMachitietsanpham()).executeUpdate();
+			
+		}
+		session.createQuery("delete CHITIETSANPHAM where masanpham ="+masp).executeUpdate();
+		session.createQuery("delete SANPHAM where masanpham ="+masp).executeUpdate();
+		return false;
 	}
 
 }

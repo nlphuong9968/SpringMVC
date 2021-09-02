@@ -59,14 +59,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<h3>Sản Phẩm </h3>
 				<div style="float: right;">
 					<button class="btn btn-primary">Add</button>
-					<button class="btn btn-info">Delete</button>
+					<button id="delete-product" class="btn btn-info">Delete</button>
 				</div>
 				<table class="table" id="table-product">
 					<thead>
 						<tr>
 							<th>
 								<div class="checkbox">
-									<label><input type="checkbox" value=""></label>
+									<label><input id="checkall" type="checkbox" value=""></label>
 								</div>
 							</th>
 							<th>Tên Sản Phẩm</th>
@@ -79,7 +79,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<td>
 									<div class="checkbox">
 										<label><input class="checkBoxSP" type="checkbox"
-											value=""></label>
+											value="${value.getMasanpham()}"></label>
 									</div>
 								</td>
 								<td class="tensp" data-masp="${value.getMasanpham() }">${value.getTensanpham()}</td>

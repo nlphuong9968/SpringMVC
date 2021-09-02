@@ -91,12 +91,12 @@ $(document).ready(function() {
 		var tongtiensp = 0;
 		if (!isChange) {
 			$(".giatien").each(function() {
-				
+
 				var soluong = $(this).closest("tr").find(".soluong-cart").val();
-		
+
 				var giatien = $(this).text();
 
-				giatien = (parseInt(giatien) / 1000)* parseInt(soluong);
+				giatien = (parseInt(giatien) / 1000) * parseInt(soluong);
 
 				var format = giatien.toFixed(3).replace(/(\d)(?=(\d{3})+\.)/g, "$1.").toString();
 				$(this).html(format);
@@ -114,7 +114,7 @@ $(document).ready(function() {
 
 				giatien = giatien.split('.').join("");
 
-				tongtiensp = tongtiensp + parseInt(giatien)/1000;
+				tongtiensp = tongtiensp + parseInt(giatien) / 1000;
 
 				var formatTongTien = tongtiensp.toFixed(3).replace(/(\d)(?=(\d{3})+\.)/g, "$1.").toString();
 
@@ -126,7 +126,7 @@ $(document).ready(function() {
 	$(".soluong-cart").change(function() {
 		var soluong = $(this).val();
 		var giatien = $(this).closest("tr").find(".giatien").attr("data-giatien");
-		
+
 		giatien = giatien / 1000;
 
 		var tongtien = soluong * giatien;
@@ -136,12 +136,12 @@ $(document).ready(function() {
 
 		$(this).closest("tr").find(".giatien").html(format);
 		assignSumMoney(true, soluong);
-		
-		
+
+
 		var mamau = $(this).closest("tr").find(".mau").attr("data-mamau");
 		var masize = $(this).closest("tr").find(".size").attr("data-masize");
 		var masp = $(this).closest("tr").find(".tensp").attr("data-masp");
-		
+
 		$.ajax({
 			url: "/minishop/api/UpdateQuantityCart",
 			type: "GET",
@@ -152,11 +152,11 @@ $(document).ready(function() {
 				soluongcart: soluong
 			},
 			success: function(value) {
-				
+
 			}
 		});
 	})
-	
+
 	/*$(".soluong-cart").blur(function(){
 		var soluong = $(this).val();
 		var mamau = $(this).closest("tr").find(".mau").attr("data-mamau");
@@ -177,13 +177,13 @@ $(document).ready(function() {
 			}
 		});
 	})*/
-	
-	$(".delete-cart").click(function(){
+
+	$(".delete-cart").click(function() {
 		var self = $(this);
 		var mamau = $(this).closest("tr").find(".mau").attr("data-mamau");
 		var masize = $(this).closest("tr").find(".size").attr("data-masize");
 		var masp = $(this).closest("tr").find(".tensp").attr("data-masp");
-		
+
 		$.ajax({
 			url: "/minishop/api/DeleteCart",
 			type: "GET",
@@ -198,18 +198,18 @@ $(document).ready(function() {
 			}
 		});
 	})
-	
-	$("body").on("click",".paging", function(){
+
+	$("body").on("click", ".paging", function() {
 		$(".paging").removeClass("active");
 		$(this).addClass("active");
 		var numPage = $(this).text();
-		var indexStart = (numPage - 1)*3;
-		
+		var indexStart = (numPage - 1) * 3;
+
 		$.ajax({
 			url: "/minishop/api/getNumPage",
 			type: "GET",
 			data: {
-				indexStart : indexStart
+				indexStart: indexStart
 			},
 			success: function(value) {
 				var tbodysp = $("#table-product").find("tbody");
@@ -218,5 +218,35 @@ $(document).ready(function() {
 			}
 		});
 	});
-	
+
+	$("#checkall").change(function() {
+		if (this.checked) {
+			$("#table-product >tbody input").each(function() {
+				$(this).attr("checked", true);
+			});
+		} else {
+			$("#table-product >tbody input").each(function() {
+				$(this).attr("checked", false);
+			});
+		}
+	});
+
+	$("#delete-product").click(function() {
+		$("#table-product >tbody input:checked").each(function() {
+			var masp = $(this).val();
+			var self = $(this);
+			self.closest("tr").remove();
+			$.ajax({
+				url: "/minishop/api/DeleteProduct",
+				type: "GET",
+				data: {
+					masp: masp
+				},
+				success: function(value) {
+					self.closest("tr").remove();
+				}
+			});
+		});
+	});
+
 })
