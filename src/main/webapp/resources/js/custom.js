@@ -248,5 +248,25 @@ $(document).ready(function() {
 			});
 		});
 	});
+	
+	var files = [];
+	
+	$("#img").change(function(event){
+		files = event.target.files;
+		forms = new FormData();
+		forms.append("file", files[0]);
+		
+		$.ajax({
+				url: "/minishop/api/UploadFile",
+				type: "POST",
+				data: forms,
+				enctype: 'multipart/form-data',
+				contentType: false,
+				processData: false,
+				success: function(value) {
+					
+				}
+			});
+	});
 
 })

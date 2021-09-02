@@ -24,6 +24,7 @@ public class SanPham {
 	private String giatien;
 	private String mota;
 	private String hinhsanpham;
+	private String gianhcho;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "madanhmuc")
@@ -106,6 +107,14 @@ public class SanPham {
 
 	public void setKhuyenMais(Set<KhuyenMai> khuyenMais) {
 		this.khuyenMais = khuyenMais;
+	}
+
+	public String getGianhcho() {
+		return gianhcho;
+	}
+
+	public void setGianhcho(String gianhcho) {
+		this.gianhcho = gianhcho;
 	}
 	
 }

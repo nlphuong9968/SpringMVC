@@ -1,19 +1,27 @@
 package com.nlphuong.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.fileupload.servlet.ServletRequestContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.nlphuong.entity.SanPham;
 import com.nlphuong.entity.ShoppingCart;
@@ -138,8 +146,37 @@ public class ApiController {
 	@GetMapping("DeleteProduct")
 	@ResponseBody
 	public String deleteProductByID(@RequestParam int masp) {
-		System.out.println(masp);
+		
 		sanPhamService.deleteProductById(masp);
+		return "";
+	}
+	
+	@Autowired
+	ServletContext context;
+	
+	@PostMapping("UploadFile")
+	@ResponseBody
+	public String uploadFile(MultipartHttpServletRequest request) {
+		String path = new File("src/main/resources/img/product/")
+                .getAbsolutePath();
+		System.out.println(path);
+		String pathSaveFile = context.getRealPath("/resources/img/product/");
+		
+		Iterator<String> listNames = request.getFileNames();
+		
+		MultipartFile mpf = request.getFile(listNames.next());
+		File fileSave = new File(pathSaveFile + mpf.getOriginalFilename());
+		
+		try {
+			mpf.transferTo(fileSave);
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println(pathSaveFile);
 		return "";
 	}
 }

@@ -23,6 +23,9 @@
 	<!-- Static Resource -->
 	<mvc:resources location="/resources/" mapping="/resources/**"/>
 	
+	<!-- multipartResolver -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
+	
 	<!-- View Resolver -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/"/>

@@ -22,7 +22,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	
 	
 	
+	
+	
+	
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+
+
+
 
 
 
@@ -56,50 +62,95 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<!--/content-inner-->
 		<div class="left-content">
 			<div class="row">
-				<h3>Sản Phẩm </h3>
-				<div style="float: right;">
-					<button class="btn btn-primary">Add</button>
-					<button id="delete-product" class="btn btn-info">Delete</button>
+				<h3>Sản Phẩm</h3>
+				<div class="col-md-6 col-sm-12 form-group">
+					<label for="tensp">Ten san pham</label> <br> 
+					<input id="tensp" name="tensp"
+						class="form-control" type="text" placeholder="Nhap san pham" /><br>
+					<label for="giatien">Gia Tien</label> <br> 
+					<input id="giatien" name="giatien"
+						class="form-control" type="text" placeholder="Nhap gia tien" /><br>
+						<label for="img">Gianh cho</label> <br>
+						<label class="radio-inline">
+						<input type="radio" name="gianhcho" checked>Nam</label> 
+						<label class="radio-inline">
+						<input type="radio" name="gianhcho">Nu</label><br/><br/>
+					<label for="sel1">Select Category:</label> 
+					<select name="danhmucsp" class="form-control" id="danhmucsp">
+						<c:forEach var="dm" items="${danhmuc}">
+							<option value="${dm.getMadanhmuc()}">${dm.getTendanhmuc() }</option>
+						</c:forEach>						
+					</select> <br> 
+					
+					<label for="mota">Mo ta</label> <br>
+					<textarea rows="5" id="mota" name="mota" class="form-control"
+						placeholder="Nhap mo ta"></textarea>
+					<br> <label for="img">Hinh anh</label> <br> 
+					<input id="img" name="img" class="form-control" type="file" /><br> 
+						
+					<span>Chi tiet san pham</span><br/>
+					
+					<select name="danhmucsp" class="form-control" id="danhmucsp">
+						<c:forEach var="dm" items="${danhmuc}">
+							<option value="${dm.getMadanhmuc()}">${dm.getTendanhmuc() }</option>
+						</c:forEach>						
+					</select> <br> 
+					<select name="danhmucsp" class="form-control" id="danhmucsp">
+						<c:forEach var="dm" items="${danhmuc}">
+							<option value="${dm.getMadanhmuc()}">${dm.getTendanhmuc() }</option>
+						</c:forEach>						
+					</select> <br> 
+					
+					<input id="img" name="img" class="form-control" type="number" placeholder="So luong"/><br> 
+					<button class="btn btn-primary">Add Product</button>
 				</div>
-				<table class="table" id="table-product">
-					<thead>
-						<tr>
-							<th>
-								<div class="checkbox">
-									<label><input id="checkall" type="checkbox" value=""></label>
-								</div>
-							</th>
-							<th>Tên Sản Phẩm</th>
-							<th>Giá</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach var="value" items="${lstSanPham}">
+				<div class="col-md-6 col-sm-12">
+
+					<div style="float: right;">
+						<button class="btn btn-primary">Add</button>
+						<button id="delete-product" class="btn btn-info">Delete</button>
+					</div>
+					<table class="table" id="table-product">
+						<thead>
 							<tr>
-								<td>
+								<th>
 									<div class="checkbox">
-										<label><input class="checkBoxSP" type="checkbox"
-											value="${value.getMasanpham()}"></label>
+										<label><input id="checkall" type="checkbox" value=""></label>
 									</div>
-								</td>
-								<td class="tensp" data-masp="${value.getMasanpham() }">${value.getTensanpham()}</td>
-								<td class="giatien" data-giatien="${value.getGiatien() }">${value.getGiatien() }</td>
+								</th>
+								<th>Tên Sản Phẩm</th>
+								<th>Giá</th>
 							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="value" items="${lstSanPham}">
+								<tr>
+									<td>
+										<div class="checkbox">
+											<label><input class="checkBoxSP" type="checkbox"
+												value="${value.getMasanpham()}"></label>
+										</div>
+									</td>
+									<td class="tensp" data-masp="${value.getMasanpham() }">${value.getTensanpham()}</td>
+									<td class="giatien" data-giatien="${value.getGiatien() }">${value.getGiatien() }</td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+					<ul class="pagination pagination-sm">
+						<c:forEach var="i" begin="1" end="${sumPages }">
+							<c:choose>
+								<c:when test="${i ==1 }">
+									<li class="paging page-item active"><a class="page-link"
+										href="#">${i }</a></li>
+								</c:when>
+								<c:otherwise>
+									<li class="paging page-item"><a class="page-link" href="#">${i }</a></li>
+								</c:otherwise>
+							</c:choose>
 						</c:forEach>
-					</tbody>
-				</table>
-				<ul class="pagination pagination-sm">
-					<c:forEach var="i" begin="1" end="${sumPages }">
-						<c:choose>
-							<c:when test="${i ==1 }">
-            					<li class="paging page-item active"><a class="page-link" href="#">${i }</a></li>
-         					</c:when>
-							<c:otherwise>
-           						<li class="paging page-item"><a class="page-link" href="#">${i }</a></li>
-         					</c:otherwise>
-						</c:choose>
-					</c:forEach>
-				</ul>
+					</ul>
+				</div>
 			</div>
 		</div>
 		<!--//content-inner-->
