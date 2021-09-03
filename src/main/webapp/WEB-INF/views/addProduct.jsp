@@ -65,66 +65,65 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="row">
 				<h3>Sản Phẩm</h3>
 				<div class="col-md-6 col-sm-12 form-group">
-					<label for="tensp">Ten san pham</label> <br> 
-					<input id="tensp" name="tensp"
-						class="form-control" type="text" placeholder="Nhap san pham" /><br>
-					<label for="giatien">Gia Tien</label> <br> 
-					<input id="giatien" name="giatien"
-						class="form-control" type="text" placeholder="Nhap gia tien" /><br>
-						<label for="img">Gianh cho</label> <br>
-						<label class="radio-inline">
-						<input type="radio" name="gianhcho" checked>Nam</label> 
-						<label class="radio-inline">
-						<input type="radio" name="gianhcho">Nu</label><br/><br/>
-					<label for="sel1">Select Category:</label> 
-					<select name="danhmucsp" class="form-control" id="danhmucsp">
-						<c:forEach var="dm" items="${danhmuc}">
-							<option value="${dm.getMadanhmuc()}">${dm.getTendanhmuc() }</option>
-						</c:forEach>						
-					</select> <br> 
-					
-					<label for="mota">Mo ta</label> <br>
-					<textarea rows="5" id="mota" name="mota" class="form-control"
-						placeholder="Nhap mo ta"></textarea>
-					<br> <label for="img">Hinh anh</label> <br> 
-					<input id="img" name="img" class="form-control" type="file" /><br> 
-					
+					<form id="formsp" action="">
+						<label for="tensp">Ten san pham</label> <br> 
+						<input id="tensp" name="tensp"
+							class="form-control" type="text" placeholder="Nhap san pham" /><br>
+						<label for="giatien">Gia Tien</label> <br> 
+						<input id="giatien" name="giatien"
+							class="form-control" type="text" placeholder="Nhap gia tien" /><br>
+							<label for="img">Gianh cho</label> <br>
+							<label class="radio-inline">
+							<input type="radio" name="gianhcho" value="Nam" checked>Nam</label> 
+							<label class="radio-inline">
+							<input type="radio" value="Nu" name="gianhcho">Nu</label><br/><br/>
+						<label for="sel1">Select Category:</label> 
+						<select name="danhmucsp" class="form-control" id="danhmucsp">
+							<c:forEach var="dm" items="${danhmuc}">
+								<option value="${dm.getMadanhmuc()}">${dm.getTendanhmuc() }</option>
+							</c:forEach>						
+						</select> <br> 
+						
+						<label for="mota">Mo ta</label> <br>
+						<textarea rows="5" id="mota" name="mota" class="form-control"
+							placeholder="Nhap mo ta"></textarea>
+						<br> <label for="img">Hinh anh</label> <br> 
+						<input id="img" name="img" class="form-control" type="file" /><br> 	
+						</form>	
+					<div id="containerchitietsanpham">
+						<div class="chitietsanpham">
+							<span>Chi tiet san pham</span><br/>
+							<select name="mausp" class="form-control" id="mausp">
+								<c:forEach var="mau" items="${mauSP}">
+									<option value="${mau.getMamau()}">${mau.getTenmau() }</option>
+								</c:forEach>						
+							</select> <br> 
+							<select name="sizesp" class="form-control" id="sizesp">
+								<c:forEach var="size" items="${sizeSP}">
+									<option value="${size.getMasize()}">${size.getSize() }</option>
+								</c:forEach>						
+							</select> <br> 
+							<input id="soluong" name="soluong" class="form-control" min="1" value="1" type="number" placeholder="So luong"/><br> 
+							<button class="btn btn-primary btn-chitiet">Add Detail</button>
+						</div>
+					</div>
 					<div id="chitietsanpham" class="chitietsanpham">
 						<span>Chi tiet san pham</span><br/>
-					
-						<select name="mausp" class="form-control" id="danhmucsp">
-							<c:forEach var="mau" items="${mauSP}">
-								<option value="${mau.getMamau()}">${mau.getTenmau() }</option>
-							</c:forEach>						
-						</select> <br> 
-						<select name="sizesp" class="form-control" id="danhmucsp">
-							<c:forEach var="size" items="${sizeSP}">
-								<option value="${size.getMasize()}">${size.getSize() }</option>
-							</c:forEach>						
-						</select> <br> 
-						
-						<input id="img" name="img" class="form-control" type="number" placeholder="So luong"/><br> 
-						<button class="btn btn-primary btn-chitiet">Add Detail</button>
-					</div>
-					<div id="containerchitietsanpham">
-						<span>Chi tiet san pham</span><br/>
-					
-						<select name="mausp" class="form-control" id="danhmucsp">
-							<c:forEach var="mau" items="${mauSP}">
-								<option value="${mau.getMamau()}">${mau.getTenmau() }</option>
-							</c:forEach>						
-						</select> <br> 
-						<select name="sizesp" class="form-control" id="danhmucsp">
-							<c:forEach var="size" items="${sizeSP}">
-								<option value="${size.getMasize()}">${size.getSize() }</option>
-							</c:forEach>						
-						</select> <br> 
-						
-						<input id="img" name="img" class="form-control" type="number" placeholder="So luong"/><br> 
-						<button class="btn btn-primary btn-chitiet">Add Detail</button>
+							<select name="mausp" class="form-control" id="mausp">
+								<c:forEach var="mau" items="${mauSP}">
+									<option value="${mau.getMamau()}">${mau.getTenmau() }</option>
+								</c:forEach>						
+							</select> <br> 
+							<select name="sizesp" class="form-control" id="sizesp">
+								<c:forEach var="size" items="${sizeSP}">
+									<option value="${size.getMasize()}">${size.getSize() }</option>
+								</c:forEach>						
+							</select> <br> 
+							<input id="soluong" name="soluong" class="form-control" min="1" value="1" type="number" placeholder="So luong"/><br> 
+							<button class="btn btn-primary btn-chitiet">Add Detail</button>
 					</div>
 					<br>
-					<button class="btn btn-primary">Add Product</button>
+					<button id="btn-addProduct" class="btn btn-primary">Add Product</button>
 				</div>
 				<div class="col-md-6 col-sm-12">
 

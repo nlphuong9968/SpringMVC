@@ -179,4 +179,10 @@ public class ApiController {
 		System.out.println(pathSaveFile);
 		return "";
 	}
+	
+	@PostMapping("AddProduct")
+	@ResponseBody
+	public void addProduct(@RequestParam String dataJson) {
+		System.out.println(dataJson);
+	}
 }

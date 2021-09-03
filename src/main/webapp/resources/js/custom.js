@@ -248,31 +248,67 @@ $(document).ready(function() {
 			});
 		});
 	});
-	
+
 	var files = [];
-	
-	$("#img").change(function(event){
+
+	$("#img").change(function(event) {
 		files = event.target.files;
 		forms = new FormData();
 		forms.append("file", files[0]);
-		
+
 		$.ajax({
-				url: "/minishop/api/UploadFile",
-				type: "POST",
-				data: forms,
-				enctype: 'multipart/form-data',
-				contentType: false,
-				processData: false,
-				success: function(value) {
-					
-				}
-			});
+			url: "/minishop/api/UploadFile",
+			type: "POST",
+			data: forms,
+			enctype: 'multipart/form-data',
+			contentType: false,
+			processData: false,
+			success: function(value) {
+
+			}
+		});
 	});
-	
-	$("body").on("click",".btn-chitiet", function(){
+
+	$("body").on("click", ".btn-chitiet", function() {
 		$(this).remove();
 		var chitietsanpham = $("#chitietsanpham").clone().removeAttr("id");
 		$("#containerchitietsanpham").append(chitietsanpham);
 	})
 
+	$("#btn-addProduct").click(function(event) {
+		event.preventDefault();
+		var formdata = $("#formsp").serializeArray();
+		
+		json = {};
+		arrayChitiet = [];
+		
+		$.each(formdata, function(i, field) {
+			json[field.name] = field.value;
+		});
+		
+		$("#containerchitietsanpham > .chitietsanpham").each(function(){
+			objectChitiet = {};
+			mausp = $(this).find('select[name = "mausp"]').val();
+			sizesp = $(this).find('select[name = "sizesp"]').val();
+			soluong = $(this).find('input[name = "soluong"]').val();
+			objectChitiet["mausp"] = mausp;
+			objectChitiet["sizesp"] = sizesp;
+			objectChitiet["soluong"] = soluong;
+			
+			arrayChitiet.push(objectChitiet);
+		})
+		json["chitietsp"] = arrayChitiet;
+		console.log(json);
+		
+		$.ajax({
+			url: "/minishop/api/AddProduct",
+			type: "POST",
+			data: {
+				dataJson: JSON.stringify(json)
+			},
+			success: function(value) {
+
+			}
+		});
+	})
 })
