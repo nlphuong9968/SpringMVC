@@ -6433,6 +6433,10 @@ ul.dropdown-menu {
 	display: none;
 }
 
+.hidden{
+	display: none;
+}
+
 .btn-chitiet{
 	display: block;
     margin-right: 0;

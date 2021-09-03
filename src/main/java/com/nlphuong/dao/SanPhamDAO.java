@@ -15,4 +15,6 @@ public interface SanPhamDAO {
 	boolean deleteProductById(int masp);
 	
 	boolean addProduct(SanPham sanPham);
+	
+	boolean updateProduct(SanPham sanPham);
 }

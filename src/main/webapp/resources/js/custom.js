@@ -1,4 +1,7 @@
 $(document).ready(function() {
+	
+	var masp = 0;
+	
 	$("#col1").click(function() {
 		$(this).addClass("active");
 	});
@@ -312,7 +315,6 @@ $(document).ready(function() {
 		})
 		json["hinhsanpham"] = tenhinh;
 		json["chiTietSanPhams"] = arrayChitiet;
-		console.log(json);
 		
 		$.ajax({
 			url: "/minishop/api/AddProduct",
@@ -325,8 +327,13 @@ $(document).ready(function() {
 			}
 		});
 	})
+		
 	$("body").on("click", ".editSP", function(){
 		masp = $(this).attr("data-id");
+		
+		$("#btn-editProduct").removeClass("hidden");
+		$("#btn-exit").removeClass("hidden");
+		$("#btn-addProduct").addClass("hidden");
 		$.ajax({
 			url: "/minishop/api/EditProduct",
 			type: "POST",
@@ -351,12 +358,62 @@ $(document).ready(function() {
 					chitietclone.find("#sizesp").val(value.chiTietSanPhams[i].sizeSanPham.masize);
 					chitietclone.find("#soluong").val(value.chiTietSanPhams[i].soluong);
 					
-					if(value.chiTietSanPhams.length !== (i+1)){
+					if(i < value.chiTietSanPhams.length -1){
 						chitietclone.find(".btn-chitiet").remove();
 					}
 					$("#containerchitietsanpham").append(chitietclone);
 				}
 				
+			}
+		});
+	})
+	$("#btn-editProduct").click(function(event){
+		event.preventDefault();
+		var formdata = $("#formsp").serializeArray();
+		
+		json = {};
+		arrayChitiet = [];
+		
+		$.each(formdata, function(i, field) {
+			json[field.name] = field.value;
+			if(field.name === "danhMucSanPham"){
+				objectDanhmuc = {};
+				objectDanhmuc["madanhmuc"] = field.value;
+				json[field.name] = objectDanhmuc;
+			}
+		});
+		$("#containerchitietsanpham > .chitietsanpham").each(function(){
+			objectChitiet = {};
+			objectMausp = {};
+			objectSizesp = {}
+			
+			mausp = $(this).find('select[name = "mausp"]').val();
+			sizesp = $(this).find('select[name = "sizesp"]').val();
+			soluong = $(this).find('input[name = "soluong"]').val();
+			
+			objectMausp["mamau"] = mausp;
+			objectChitiet["mauSanPham"] = objectMausp;
+			
+			objectSizesp["masize"] = sizesp;
+			objectChitiet["sizeSanPham"] = objectSizesp;
+			
+			objectChitiet["soluong"] = soluong;
+			
+			arrayChitiet.push(objectChitiet);
+		})
+		json["masanpham"] = masp;
+		json["hinhsanpham"] = tenhinh;
+		json["chiTietSanPhams"] = arrayChitiet;
+		console.log(json);
+		
+		$.ajax({
+			url: "/minishop/api/UpdateProduct",
+			type: "POST",
+			data: {
+				dataJson: JSON.stringify(json)
+			},
+			success: function(value) {
+
 			}
 		});
 	})

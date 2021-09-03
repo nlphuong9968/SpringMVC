@@ -300,4 +300,23 @@ public class ApiController {
 		
 		return jsonSP;
 	}
+	
+	@PostMapping("UpdateProduct")
+	@ResponseBody
+	public void updateProduct(@RequestParam String dataJson) {
+		ObjectMapper mapper = new ObjectMapper();
+		System.out.println(dataJson);
+		try {
+			SanPham sanPham = mapper.readValue(dataJson, SanPham.class);
+			System.out.println(sanPham.getMasanpham()+"-"+sanPham.getTensanpham()+"-"+sanPham.getChiTietSanPhams().size()+"-"+sanPham.getDanhMucSanPham().getMadanhmuc());
+			sanPhamService.updateProduct(sanPham);
+		} catch (JsonMappingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 }

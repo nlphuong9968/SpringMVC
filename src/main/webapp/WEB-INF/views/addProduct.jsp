@@ -124,6 +124,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 					<br>
 					<button id="btn-addProduct" class="btn btn-primary">Add Product</button>
+					<button id="btn-editProduct" class="btn btn-primary hidden">Edit</button>
+					<button id="btn-exit" class="btn btn-primary hidden">Exit</button>
 				</div>
 				<div class="col-md-6 col-sm-12">
 

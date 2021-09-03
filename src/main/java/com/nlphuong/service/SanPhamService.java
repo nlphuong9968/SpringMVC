@@ -46,4 +46,10 @@ public class SanPhamService implements SanPhamDAO{
 		return sanPhamImpl.addProduct(sanPham);
 	}
 
+	@Override
+	public boolean updateProduct(SanPham sanPham) {
+		// TODO Auto-generated method stub
+		return sanPhamImpl.updateProduct(sanPham);
+	}
+
 }
