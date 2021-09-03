@@ -335,6 +335,28 @@ $(document).ready(function() {
 			},
 			success: function(value) {
 				console.log(value);
+				$("#tensanpham").val(value.tensanpham);
+				$("#giatien").val(value.giatien);
+				value.gianhcho === "Nam" ? $("#rdNam").prop("checked", true)
+										 : $("#rdNu").prop("checked", true);
+				$("#mota").val(value.mota);
+				
+				$("#danhMucSanPham").val(value.danhMucSanPham.madanhmuc);
+				
+				$("#containerchitietsanpham").empty();
+				
+				for(i = 0; i < value.chiTietSanPhams.length; i++){
+					var chitietclone = $("#chitietsanpham").clone().removeAttr("id");
+					chitietclone.find("#mausp").val(value.chiTietSanPhams[i].mauSanPham.mamau);
+					chitietclone.find("#sizesp").val(value.chiTietSanPhams[i].sizeSanPham.masize);
+					chitietclone.find("#soluong").val(value.chiTietSanPhams[i].soluong);
+					
+					if(value.chiTietSanPhams.length !== (i+1)){
+						chitietclone.find(".btn-chitiet").remove();
+					}
+					$("#containerchitietsanpham").append(chitietclone);
+				}
+				
 			}
 		});
 	})

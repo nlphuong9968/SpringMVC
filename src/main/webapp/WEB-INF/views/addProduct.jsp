@@ -74,9 +74,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							class="form-control" type="text" placeholder="Nhap gia tien" /><br>
 							<label for="img">Gianh cho</label> <br>
 							<label class="radio-inline">
-							<input type="radio" name="gianhcho" value="Nam" checked>Nam</label> 
+							<input id="rdNam" type="radio" name="gianhcho" value="Nam" checked>Nam</label> 
 							<label class="radio-inline">
-							<input type="radio" value="Nu" name="gianhcho">Nu</label><br/><br/>
+							<input id="rdNu" type="radio" value="Nu" name="gianhcho">Nu</label><br/><br/>
 						<label for="sel1">Select Category:</label> 
 						<select name="danhMucSanPham" class="form-control" id="danhMucSanPham">
 							<c:forEach var="dm" items="${danhmuc}">
