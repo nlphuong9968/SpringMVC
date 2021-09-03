@@ -19,7 +19,7 @@ public class DanhMucSanPham {
 	private String tendanhmuc;
 	private String hinhdanhmuc;
 	
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany
 	@JoinColumn(name = "madanhmuc")
 	private Set<SanPham> sanPhams;
 	

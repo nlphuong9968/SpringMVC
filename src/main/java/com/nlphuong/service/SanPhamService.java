@@ -40,4 +40,10 @@ public class SanPhamService implements SanPhamDAO{
 		return sanPhamImpl.deleteProductById(masp);
 	}
 
+	@Override
+	public boolean addProduct(SanPham sanPham) {
+		
+		return sanPhamImpl.addProduct(sanPham);
+	}
+
 }

@@ -250,9 +250,10 @@ $(document).ready(function() {
 	});
 
 	var files = [];
-
-	$("#img").change(function(event) {
+	var tenhinh = "";
+	$("#hinhsanpham").change(function(event) {
 		files = event.target.files;
+		tenhinh = files[0].name;
 		forms = new FormData();
 		forms.append("file", files[0]);
 
@@ -284,20 +285,33 @@ $(document).ready(function() {
 		
 		$.each(formdata, function(i, field) {
 			json[field.name] = field.value;
+			if(field.name === "danhMucSanPham"){
+				objectDanhmuc = {};
+				objectDanhmuc["madanhmuc"] = field.value;
+				json[field.name] = objectDanhmuc;
+			}
 		});
-		
 		$("#containerchitietsanpham > .chitietsanpham").each(function(){
 			objectChitiet = {};
+			objectMausp = {};
+			objectSizesp = {}
+			
 			mausp = $(this).find('select[name = "mausp"]').val();
 			sizesp = $(this).find('select[name = "sizesp"]').val();
 			soluong = $(this).find('input[name = "soluong"]').val();
-			objectChitiet["mausp"] = mausp;
-			objectChitiet["sizesp"] = sizesp;
+			
+			objectMausp["mamau"] = mausp;
+			objectChitiet["mauSanPham"] = objectMausp;
+			
+			objectSizesp["masize"] = sizesp;
+			objectChitiet["sizeSanPham"] = objectSizesp;
+			
 			objectChitiet["soluong"] = soluong;
 			
 			arrayChitiet.push(objectChitiet);
 		})
-		json["chitietsp"] = arrayChitiet;
+		json["hinhsanpham"] = tenhinh;
+		json["chiTietSanPhams"] = arrayChitiet;
 		console.log(json);
 		
 		$.ajax({

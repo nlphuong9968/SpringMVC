@@ -3,8 +3,10 @@ package com.nlphuong.controller;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
@@ -23,8 +25,16 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.nlphuong.entity.ChiTietSanPham;
+import com.nlphuong.entity.DanhMucSanPham;
+import com.nlphuong.entity.MauSanPham;
 import com.nlphuong.entity.SanPham;
 import com.nlphuong.entity.ShoppingCart;
+import com.nlphuong.entity.SizeSanPham;
 import com.nlphuong.service.NhanVienService;
 import com.nlphuong.service.SanPhamService;
 
@@ -183,6 +193,64 @@ public class ApiController {
 	@PostMapping("AddProduct")
 	@ResponseBody
 	public void addProduct(@RequestParam String dataJson) {
+		ObjectMapper mapper = new ObjectMapper();
 		System.out.println(dataJson);
+		try {
+			SanPham sanPham = mapper.readValue(dataJson, SanPham.class);
+			System.out.println(sanPham.getTensanpham()+"-"+sanPham.getChiTietSanPhams().size()+"-"+sanPham.getDanhMucSanPham().getMadanhmuc());
+			sanPhamService.addProduct(sanPham);
+		} catch (JsonMappingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+//		JsonNode jsonNode;
+//		try {
+//			jsonNode = mapper.readTree(dataJson);
+//			JsonNode jsonChitietJsonNode = jsonNode.get("chiTietSanPhams");
+//			
+//			SanPham sanPham = new SanPham();
+//			DanhMucSanPham danhMucSanPham = new DanhMucSanPham();
+//			Set<ChiTietSanPham> chiTietSanPhams = new HashSet<>();
+//			
+//			for (JsonNode chitietNode : jsonChitietJsonNode) {
+//				ChiTietSanPham chiTietSanPham = new ChiTietSanPham();
+//				
+//				MauSanPham mauSanPham = new MauSanPham();
+//				mauSanPham.setMamau(chitietNode.get("mauSanPham").asInt());
+//				
+//				SizeSanPham sizeSanPham = new SizeSanPham();
+//				
+//				sizeSanPham.setMasize(chitietNode.get("sizeSanPham").asInt());
+//				
+//				chiTietSanPham.setMauSanPham(mauSanPham);
+//				chiTietSanPham.setSizeSanPham(sizeSanPham);
+//				chiTietSanPham.setSoluong(chitietNode.get("soluong").asInt());
+//				
+//				chiTietSanPhams.add(chiTietSanPham);
+//			}
+//			
+//			danhMucSanPham.setMadanhmuc(jsonNode.get("danhMucSanPham").asInt());
+//			
+//			sanPham.setTensanpham(jsonNode.get("tensanpham").asText());
+//			sanPham.setGiatien(jsonNode.get("giatien").asText());
+//			sanPham.setGianhcho(jsonNode.get("gianhcho").asText());
+//			sanPham.setMota(jsonNode.get("mota").asText());
+//			sanPham.setHinhsanpham(jsonNode.get("hinhsanpham").asText());
+//			sanPham.setDanhMucSanPham(danhMucSanPham);
+//			sanPham.setChiTietSanPhams(chiTietSanPhams);
+//			
+//			sanPhamService.addProduct(sanPham);
+//		} catch (JsonMappingException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (JsonProcessingException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}	
 	}
 }

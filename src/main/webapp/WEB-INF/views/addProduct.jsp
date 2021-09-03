@@ -66,8 +66,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<h3>Sản Phẩm</h3>
 				<div class="col-md-6 col-sm-12 form-group">
 					<form id="formsp" action="">
-						<label for="tensp">Ten san pham</label> <br> 
-						<input id="tensp" name="tensp"
+						<label for="tensanpham">Ten san pham</label> <br> 
+						<input id="tensanpham" name="tensanpham"
 							class="form-control" type="text" placeholder="Nhap san pham" /><br>
 						<label for="giatien">Gia Tien</label> <br> 
 						<input id="giatien" name="giatien"
@@ -78,7 +78,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<label class="radio-inline">
 							<input type="radio" value="Nu" name="gianhcho">Nu</label><br/><br/>
 						<label for="sel1">Select Category:</label> 
-						<select name="danhmucsp" class="form-control" id="danhmucsp">
+						<select name="danhMucSanPham" class="form-control" id="danhMucSanPham">
 							<c:forEach var="dm" items="${danhmuc}">
 								<option value="${dm.getMadanhmuc()}">${dm.getTendanhmuc() }</option>
 							</c:forEach>						
@@ -87,8 +87,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<label for="mota">Mo ta</label> <br>
 						<textarea rows="5" id="mota" name="mota" class="form-control"
 							placeholder="Nhap mo ta"></textarea>
-						<br> <label for="img">Hinh anh</label> <br> 
-						<input id="img" name="img" class="form-control" type="file" /><br> 	
+						<br> <label for="hinhsanpham">Hinh anh</label> <br> 
+						<input id="hinhsanpham" name="hinhsanpham" class="form-control" type="file" /><br> 	
 						</form>	
 					<div id="containerchitietsanpham">
 						<div class="chitietsanpham">

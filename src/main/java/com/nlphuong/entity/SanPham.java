@@ -26,7 +26,7 @@ public class SanPham {
 	private String hinhsanpham;
 	private String gianhcho;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne
 	@JoinColumn(name = "madanhmuc")
 	private DanhMucSanPham danhMucSanPham;
 	

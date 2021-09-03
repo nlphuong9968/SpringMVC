@@ -22,11 +22,11 @@ public class ChiTietSanPham {
 	@JoinColumn(name = "masanpham")
 	private SanPham sanPham;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne
 	@JoinColumn(name = "masize")
 	private SizeSanPham sizeSanPham;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne
 	@JoinColumn(name = "mamau")
 	private MauSanPham mauSanPham;
 

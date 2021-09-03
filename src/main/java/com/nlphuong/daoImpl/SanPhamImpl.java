@@ -83,4 +83,16 @@ public class SanPhamImpl implements SanPhamDAO {
 		return false;
 	}
 
+	@Override
+	@Transactional
+	public boolean addProduct(SanPham sanPham) {
+		Session session = sessionFactory.getCurrentSession();
+		int id = (int) session.save(sanPham);
+		if(id > 0) {
+			return true;
+		}else {
+		return false;
+		}
+	}
+
 }

@@ -13,4 +13,6 @@ public interface SanPhamDAO {
 	List<SanPham> getListProductByCategoryId(int madanhmuc);
 	
 	boolean deleteProductById(int masp);
+	
+	boolean addProduct(SanPham sanPham);
 }
