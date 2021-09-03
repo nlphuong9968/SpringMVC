@@ -325,4 +325,17 @@ $(document).ready(function() {
 			}
 		});
 	})
+	$("body").on("click", ".editSP", function(){
+		masp = $(this).attr("data-id");
+		$.ajax({
+			url: "/minishop/api/EditProduct",
+			type: "POST",
+			data: {
+				masanpham: masp
+			},
+			success: function(value) {
+				console.log(value);
+			}
+		});
+	})
 })

@@ -154,6 +154,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									</td>
 									<td class="tensp" data-masp="${value.getMasanpham() }">${value.getTensanpham()}</td>
 									<td class="giatien" data-giatien="${value.getGiatien() }">${value.getGiatien() }</td>
+									<td class="editSP" data-id="${value.getMasanpham()}"><button>Edit</button></td> 
 								</tr>
 							</c:forEach>
 						</tbody>
