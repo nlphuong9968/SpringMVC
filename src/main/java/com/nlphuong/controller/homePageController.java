@@ -2,60 +2,56 @@ package com.nlphuong.controller;
 
 import java.util.List;
 
-import org.hibernate.Session;
+import javax.servlet.http.HttpSession;
+
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.nlphuong.entity.Employee;
+import com.nlphuong.entity.DanhMucSanPham;
+import com.nlphuong.entity.SanPham;
+import com.nlphuong.entity.ShoppingCart;
+import com.nlphuong.service.DanhMucSPService;
+import com.nlphuong.service.SanPhamService;
 
 @Controller
 @RequestMapping("/")
+@SessionAttributes("cart")
 public class homePageController {
 	
 	@Autowired
-	SessionFactory sessionFactory;
+	SanPhamService sanPhamService;
+	
+	@Autowired
+	DanhMucSPService danhMucSPService;
 	
 	@GetMapping
 	@Transactional
-	public String Default(ModelMap modelMap) {
+	public String Default(ModelMap modelMap, HttpSession httpSession) {
+		List<DanhMucSanPham> mucSanPhams = danhMucSPService.getDanhMucSP();
+		String email = (String) httpSession.getAttribute("email");
+		if(email != null) {
+			Character firstChar = email.charAt(0);
+			modelMap.addAttribute("firstChar", firstChar);
+		}
 		
-		Session session = sessionFactory.getCurrentSession();
-		//Update data
-		//cach 1
+		if(httpSession.getAttribute("cart") != null) {
+			List<ShoppingCart> lisCarts = (List<ShoppingCart>) httpSession.getAttribute("cart");
+			modelMap.addAttribute("quantityPro", lisCarts.size());
+		}
 		
-//		Employee emp = new Employee("sam", 30);
-//		
-//		emp.setIdEmp(5);
-//		
-//		emp.setName("John");
-//		emp.setAge(29);
-//		
-//		session.update(emp);
+		List<SanPham> sanPhams = sanPhamService.getListProductLimit(0);
 		
-		//cach 2
-//		Employee emp = (Employee) session.createQuery(" from Employee Where idEmp = 5").uniqueResult();
-//		
-//		emp.setName("Josh");
-//		
-//		session.update(emp);
-		
-		//cach 3 with condition is ID
-		Employee emp = (Employee) session.get(Employee.class, 5);
-		
-		emp.setName("John");
-		
-		session.update(emp);
+		modelMap.addAttribute("lstSanPham", sanPhams);
+		modelMap.addAttribute("danhmuc", mucSanPhams);
 		
 		return "homePage";
 	}
-	
-	
 		
 }
